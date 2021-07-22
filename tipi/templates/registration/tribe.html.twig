@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'Enregistrer{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center my-4">Créer sa Tribu</h1>
+
+{{ form_start(formTribe) }}
+
+    {{ form_row(formTribe.tribeName, {
+        label: 'Nom de Tribu'
+    }) }}
+
+    <button type="submit" class="btn btn-warning mb-5">Enregistrer</button>
+
+{{ form_end(formTribe) }}
+
+
+{% endblock %}
