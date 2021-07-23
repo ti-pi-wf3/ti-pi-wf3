@@ -8,7 +8,6 @@ use App\Form\TribeType;
 use App\Form\RegistrationType;
 use App\Repository\TribeRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Controller\RegistrationController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,6 +46,8 @@ class RegistrationController extends AbstractController
     
         ]); 
     }
+
+     // Creation du chef de la tribu
 
     /**
      * @Route("/register", name="register")
@@ -88,6 +89,51 @@ class RegistrationController extends AbstractController
             // 'superUser' => 'ROLE_SUPER_USER',
             
             'formRegister' => $formRegister->createView(),
+        ]);
+    }
+
+    // Creation d'un nouveau membre de la tribu
+    /**
+     * @Route("/addMember", name="addMember")
+     */
+    public function addMember(Request $request, EntityManagerInterface $manager,  SessionInterface $session, UserPasswordHasherInterface $encoder): Response
+    {
+        $user = $this->getUser();
+        dump($user->getTribeId());
+
+        $addMember = new User();
+        $formAddMember = $this->createForm(RegistrationType::class, $addMember);
+
+        $formAddMember->handleRequest($request);
+
+        dump($request);
+
+        if($formAddMember->isSubmitted() && $formAddMember->isValid())
+        {
+            $hash = $encoder->hashPassword($addMember, $addMember->getPassword());
+            dump($hash);
+            $addMember->setPassword($hash);
+
+            $tribeName = $user->getTribeId();
+
+            dump($tribeName);
+            
+            
+
+            $addMember->setTribeId($tribeName);
+            $addMember->setRoles(["ROLE_USER"]);
+
+            $manager->persist($addMember);
+
+            $manager->flush();
+
+            return $this->redirectToRoute('admin');
+        }
+
+        return $this->render('registration/add_member.html.twig', [
+            // 'superUser' => 'ROLE_SUPER_USER',
+            
+            'formAddMember' => $formAddMember->createView(),
         ]);
     }
 }
