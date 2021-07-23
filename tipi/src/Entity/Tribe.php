@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Entity\User;
-use App\Entity\Tribe;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\TribeRepository;
 use Doctrine\Common\Collections\Collection;

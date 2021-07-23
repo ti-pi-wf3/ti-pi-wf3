@@ -1,0 +1,36 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}S'inscrire{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center my-4">Créer compte utilisateur</h1>
+
+{{ form_start(formRegister_user) }}
+
+    {{ form_row(formRegister_user.status) }}
+
+    {{ form_row(formRegister_user.firstName) }}
+
+    {{ form_row(formRegister_user.lastName) }}
+
+    {{ form_row(formRegister_user.maidenName) }}
+
+    {{ form_row(formRegister_user.email) }}
+
+    {{ form_row(formRegister_user.birthDate) }}
+
+    {{ form_row(formRegister_user.sexe, {
+        label: 'Sexe'
+    }) }}
+
+    {{ form_row(formRegister_user.phone) }}
+
+    {{ form_row(formRegister_user.password) }}
+
+    <button type="submit" class="btn btn-warning mb-5">Ajouter</button>
+
+{{ form_end(formRegister_user) }}
+
+
+{% endblock %}
