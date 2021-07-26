@@ -6,7 +6,15 @@
 
 <div class="container">
     <div class="col-12">
-        <h1 class="text-center my-4">Créer une réunion</h1>
+        <h1 class="fst-italic text-center my-5">
+        {# Si la condition IF renvoie TRUE, cela veut dire que editMode(fichier BlogController.php) contient un ID d'un article, alors c'est une modification #}
+        {% if editCouncil %}
+            Modification d'une Réunion
+        {# Sinon editMode ne contient aucun ID d'article, il renvoi FALSE, alors c'est une insertion, on entre dans le ESLE #}
+        {% else %}
+            Création d'une Réunion
+        {% endif %}
+    </h1>
 
         {{ form_start(formAddCouncil) }}
 
@@ -22,7 +30,13 @@
 
             {{ form_row(formAddCouncil.hourEnd) }}
 
-            <button type="submit" class="btn btn-warning mb-5">Ajouter</button>
+            <button type="submit" class="btn btn-primary mb-5">
+            {% if editCouncil %}
+                Enregistrer les modifications
+            {% else %}
+                Enregistrer
+            {% endif %}
+        </button>
 
         {{ form_end(formAddCouncil) }}
 

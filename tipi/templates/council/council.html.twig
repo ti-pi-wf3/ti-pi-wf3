@@ -7,7 +7,9 @@
     <div class="text-center my-4">
         <h1>{{ controller_homeCouncilTitre }}</h1>
 
-        <button type="submit" class="btn btn-warning mb-5">Créer une réunion</button>
+        <button type="submit" class="btn btn-warning mb-5">
+        <a href="{{ path('addCouncil') }}">Créer une réunion !</a>
+        </button>
         <hr>
 
     </div>
@@ -38,7 +40,7 @@
                         {# 'blog_shox' correspond à la route permettant l'affichage du détail de l'Council #}
                         {# C'est une route paramétrée qui attend un ID d'un Council dans l'URL #}
                         {# en 2ème arguement de la fonction path(), nous fournissons l'id de l'Council à transmettre dans l'URL ({'id': oneCouncil.id}) #}
-                        {# <a href="{{ path('showCouncil', {'id': oneCouncil.id}) }}" class="stretched-link">Modifier</a> #}
+                        <a href="{{ path('councilEdit', {'id': oneCouncil.id}) }}" class="stretched-link">Modifier</a>
                     </div>
                 </div>
             </div>
