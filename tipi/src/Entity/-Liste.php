@@ -50,7 +50,7 @@ class Liste
     private $valid;
 
     /**
-     * @ORM\ManyToMany(targetEntity=CategoryArticle::class, inversedBy="listes")
+     * @ORM\Column(type="string", length=255)
      */
     private $titleCategoryArticle;
 
