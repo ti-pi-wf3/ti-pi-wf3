@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Entity\Tribe;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -82,6 +84,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $indPhone;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Council::class, mappedBy="user")
+     */
+    private $councils;
+
+    public function __construct()
+    {
+        $this->councils = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -270,6 +282,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIndPhone(?string $indPhone): self
     {
         $this->indPhone = $indPhone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Council[]
+     */
+    public function getCouncils(): Collection
+    {
+        return $this->councils;
+    }
+
+    public function addCouncil(Council $council): self
+    {
+        if (!$this->councils->contains($council)) {
+            $this->councils[] = $council;
+            $council->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCouncil(Council $council): self
+    {
+        if ($this->councils->removeElement($council)) {
+            // set the owning side to null (unless already changed)
+            if ($council->getUser() === $this) {
+                $council->setUser(null);
+            }
+        }
 
         return $this;
     }
