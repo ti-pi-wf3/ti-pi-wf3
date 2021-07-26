@@ -1,0 +1,31 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Réunions{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="col-12">
+        <h1 class="text-center my-4">Créer une réunion</h1>
+
+        {{ form_start(formAddCouncil) }}
+
+            {{ form_row(formAddCouncil.titleCouncilTribe) }}
+
+            {{ form_row(formAddCouncil.comments) }}
+
+            {{ form_row(formAddCouncil.dateStart) }}
+
+            {{ form_row(formAddCouncil.dateEnd) }}
+
+            {{ form_row(formAddCouncil.hourStart) }}
+
+            {{ form_row(formAddCouncil.hourEnd) }}
+
+            <button type="submit" class="btn btn-warning mb-5">Ajouter</button>
+
+        {{ form_end(formAddCouncil) }}
+
+    </div>
+</div>
+{% endblock %}
