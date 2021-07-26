@@ -51,7 +51,7 @@ class LoginForAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('tipi'));
+        return new RedirectResponse($this->urlGenerator->generate('user'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

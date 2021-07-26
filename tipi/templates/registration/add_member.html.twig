@@ -1,0 +1,36 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajout Membre{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center my-4">Ajouter un membre à la tribu</h1>
+
+{{ form_start(formAddMember) }}
+
+    {{ form_row(formAddMember.status) }}
+
+    {{ form_row(formAddMember.firstName) }}
+
+    {{ form_row(formAddMember.lastName) }}
+
+    {{ form_row(formAddMember.maidenName) }}
+
+    {{ form_row(formAddMember.email) }}
+
+    {{ form_row(formAddMember.birthDate) }}
+
+    {{ form_row(formAddMember.sexe, {
+        label: 'Sexe'
+    }) }}
+
+    {{ form_row(formAddMember.phone) }}
+
+    {{ form_row(formAddMember.password) }}
+
+    <button type="submit" class="btn btn-warning mb-5">Ajouter</button>
+
+{{ form_end(formAddMember) }}
+
+
+{% endblock %}
