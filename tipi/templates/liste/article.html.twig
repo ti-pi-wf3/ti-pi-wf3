@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+<div class="row">
+
+<h1 class="text-center my-4">Ajouter un Article </h1>
+
+{{ form_start(formArticle) }}
+
+    {{ form_row(formArticle.categoryArticle) }}
+
+    {{ form_row(formArticle.titleArticle) }}
+
+    <button type="submit" class="btn btn-warning mb-5">Ajouter</button>
+
+{{ form_end(formArticle) }}
+
+</div>
+</div>
+
+
+
+{% endblock %}

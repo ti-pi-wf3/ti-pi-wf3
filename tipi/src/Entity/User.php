@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Entity\Tribe;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -82,6 +84,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $indPhone;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Liste::class, mappedBy="user")
+     */
+    private $listes;
+
+    public function __construct()
+    {
+        $this->listes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -270,6 +282,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIndPhone(?string $indPhone): self
     {
         $this->indPhone = $indPhone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Liste[]
+     */
+    public function getListes(): Collection
+    {
+        return $this->listes;
+    }
+
+    public function addListe(Liste $liste): self
+    {
+        if (!$this->listes->contains($liste)) {
+            $this->listes[] = $liste;
+            $liste->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListe(Liste $liste): self
+    {
+        if ($this->listes->removeElement($liste)) {
+            // set the owning side to null (unless already changed)
+            if ($liste->getUser() === $this) {
+                $liste->setUser(null);
+            }
+        }
 
         return $this;
     }
