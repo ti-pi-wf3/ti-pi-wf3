@@ -2,19 +2,25 @@
 
 {% block title %}S'Enregistrer{% endblock %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+
+
 {% block body %}
 
-<h1 class="text-center my-4">Créer sa Tribu</h1>
-
+<h2 class="text-center my-4 title">Créer sa tribu</h2>
+<div class="col-4 mx-auto pt-5 text-center">
 {{ form_start(formTribe) }}
 
     {{ form_row(formTribe.tribeName, {
         label: 'Nom de Tribu'
     }) }}
-
-    <button type="submit" class="btn btn-warning mb-5">Enregistrer</button>
+{# 
+    <button type="submit" class="btn btn-warning mb-5">Enregistrer</button> #}
+    <input type="submit" class="button" value="Enregistrer">
 
 {{ form_end(formTribe) }}
-
+</div>
 
 {% endblock %}

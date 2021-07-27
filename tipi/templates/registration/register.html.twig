@@ -4,33 +4,51 @@
 
 {% block body %}
 
-<h1 class="text-center my-4">Créer compte administrateur</h1>
+<h2 class="text-center my-4 title">Créer un chef de tribu</h2>
+
+<div class="col-4 mx-auto pt-5 mb-5 ">
 
 {{ form_start(formRegister) }}
 
     {{ form_row(formRegister.status) }}
 
-    {{ form_row(formRegister.firstName) }}
+    {{ form_row(formRegister.firstName, {
+        label: 'Prénom'
+    }) }}
 
-    {{ form_row(formRegister.lastName) }}
+    {{ form_row(formRegister.lastName, {
+        label: 'Nom'
+    }) }}
 
-    {{ form_row(formRegister.maidenName) }}
+    {{ form_row(formRegister.maidenName, {
+        label: 'Nom de jeune fille'
+    }) }}
 
-    {{ form_row(formRegister.email) }}
+    {{ form_row(formRegister.email, {
+        label: 'Email'
+    }) }}
 
-    {{ form_row(formRegister.birthDate) }}
+    {{ form_row(formRegister.birthDate, {
+        label: 'Date de naissance'
+    }) }}
 
     {{ form_row(formRegister.sexe, {
         label: 'Sexe'
     }) }}
 
-    {{ form_row(formRegister.phone) }}
+    {{ form_row(formRegister.phone, {
+        label: 'Téléphone'
+    }) }}
 
-    {{ form_row(formRegister.password) }}
+    {{ form_row(formRegister.password, {
+        label: 'Mot de passe'
+    }) }}
 
-    <button type="submit" class="btn btn-warning mb-5">Ajouter</button>
+    {# <button type="submit" class="btn btn-warning mb-5">Ajouter</button> #}
+    <input type="submit" class="button" value="Enregistrer">
 
 {{ form_end(formRegister) }}
+</div>
 
 
 {% endblock %}
