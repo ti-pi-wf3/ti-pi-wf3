@@ -27,12 +27,17 @@ class ListeController extends AbstractController
     }
 
     /**
-     * @Route("/liste", name="liste")
+     * @Route("/index", name="index")
      */
     public function index(): Response
     {
-        return $this->render('liste/liste.html.twig', [
-            'liste' => 'ListeController',
+
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+
+        // dd($articles);
+
+        return $this->render('liste/index.html.twig', [
+            'articles' => $articles,
         ]);
     }
 
@@ -60,6 +65,27 @@ class ListeController extends AbstractController
         ]);
     }
 
+        /**
+     * @Route("/category", name="category")
+     */
+    public function categoryAdd(Request $request, EntityManagerInterface $manager, ArticleRepository $articleRepository, CategoryArticleRepository $categoryArticleRepository):Response
+    {
+        $category = new CategoryArticle;
+        $formCategory = $this->createForm(CategoryArticleType::class, $category);
+        $formCategory->handleRequest($request);
+
+        // dd($category);
+        if($formCategory->isSubmitted() && $formCategory->isValid())
+        {
+            $manager->persist($category);
+            $manager->flush();
+        }
+        
+        return $this->render('liste/categoryArticle.html.twig', [
+            'formCategory' => $formCategory->createView(),
+        ]);
+    }
+
     /**
      * @Route("/viewArticle", name="viewArticle")
      * 
@@ -68,6 +94,7 @@ class ListeController extends AbstractController
     public function viewAll(ArticleRepository $articleRepository, Request $request)
     {
         $articles = $articleRepository->findAll();
+        
         dump($articles);
 
         return $this->render('liste/liste.html.twig', [

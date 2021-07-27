@@ -6,21 +6,36 @@
 
     <div class="container">
 
-        <div class="row d-flex">
+            {% if category is not defined %}
 
-            {% for oneArticle in articlesBDD %}
-
-            <div class="col-2 mx-auto">
+                {% for oneArticle in articlesBDD %}
+        
+                <div class="col-2 mx-auto">
                 <h4>{{ oneArticle.categoryArticle }}</h4>
-                <p>{{ oneArticle.titleArticle }}</p>
-                <a href="">Ajouter un Article</a>
-            </div>
 
+
+            {% endif %}
+
+                {% for titre in articlesBDD %}
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault" name="fruits" value="Pomme">
+                        <p>{{ oneArticle.titleArticle }}</p>
+                    </label>
+                </div>
+
+                {% endfor %}
+            </div>
+        
             {% endfor %}
 
-                <div>
-                <p>Retour</p>
-                </div>
+            <div>
+            <a href="{{ path('category') }}"><button class="btn btn-dark my-2">Ajouter Category</button></a>
+            </div>
+            <div>
+            <a href="{{ path('article') }}"><button class="btn btn-success"> Ajouter un Article</button></a>
+            </div>
 
         </div>
 
