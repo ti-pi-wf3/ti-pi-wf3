@@ -17,31 +17,66 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class CouncilController extends AbstractController
 {
     /**
-     * entrer sur la fonctionnalité réunion + affichage des Réunions existantes
+     * entrer sur la fonctionnalité réunion + affichage des Réunions existantes + posibilité de modifier/supprimer 1 réunion
      * 
      * @Route("/council", name="council")
+     * @Route("/council/{id}/remove", name="councilRemove")
      */
-    public function homeCouncil(CouncilRepository $repoCouncils): Response
+    public function homeCouncil( EntityManagerInterface $manager , CouncilRepository $repoCouncils, Council $councilRemove = null): Response
     {
         // ********* CREER LE LIEN avec CouncilRepository.php et DONC la BDD ********* //
         // Contrôle :
-        dump($repoCouncils);// dump(): outil de debug propre à Symfony, on affiche se que contient $repoCouncils
+        dump($repoCouncils); // dump(): outil de debug propre à Symfony, on affiche se que contient $repoCouncils
 
-        // ********* SELECTIONNE ds la BDD des CouncilS ********* //
+        dump($councilRemove);
+
+        // ********* SELECTIONNE ds la BDD d'1 Council pr préparer la suppression ********* //
+        // via le manager qui permet de manipuler la BDD (insert, upadte, delete etc...), on execute la méthode getClassMetadata() afin de selectionner les méta données (primary key ,not null, noms des champs etc..) d'une entité (donc d'une table SQL), pour selectionner le nom des champs/colonnes de la table grace à la méthode getFieldNames()
+        // getColumnMeta()
+        $colonnes = $manager->getClassMetadata(Council::class)->getFieldNames();
+        dump($colonnes);
+
+        // ********* SELECTIONNE ds la BDD des CouncilS pr les afficher ********* //
         // findAll(): SELECT * FROM Council + FETCHALL
         // $Councils : tableau ARRAY multidimentionnel contenant l'ensemble des Councils stockés ds la BDD
-        $Councils = $repoCouncils->findAll();
-        dump($Councils); // dump(): outil de debug propre à Symfony, on affiche se que contient $Councils
+        // $councilsUser = $this->findBy(); // findBy, findOneBy ou countBy ->getUser()
+        // dump($councilsUser);
+        $user = $this->getUser();
+        dump($user->getId());
+
+        $councils = $repoCouncils->findBy(array("user" => $user));
+        dump($councils); // dump(): outil de debug propre à Symfony, on affiche se que contient $Councils
+        
+
+        // ********* TRAITEMENT SUPPRESSION REUNION BDD
+        // SI la condition IF retourne TRUE, cela veut dire $councilRemove contient les informations de la reunion a supprimer en BDD, on entre dans le IF
+        if($councilRemove)
+        {
+            // Avant de supprimer le council en BDD, on stock son ID dans une variable afin de l'injecter dans le message de validation
+            $councilTitle = $councilRemove->getTitleCouncilTribe();
+
+            // remove() : méthode issue de l'interface EntityManagerInterface permettant de formuler une requete SQL de suppression (DELETE) 
+            // $pdo->prepare("DELETE FROM councilicle WHERE id = $_GET[id]")
+            $manager->remove($councilRemove);
+            // flush() execute véritablement la requete DELETE en BDD (execute())
+            $manager->flush();
+
+            $this->addFlash('success', "$councilTitle a été supprimé avec succès !");
+
+            return $this->redirectToRoute('council');
+        }
 
         // ********* AFFICHE les REUNIONS s/ LE TEMPLATE ds ma page  ********* //
         return $this->render('council/council.html.twig', [
             'controller_homeCouncilTitre' => 'Gérer vos réunions!',
-            'CouncilsBDD' => $Councils // via la méthode render() on transmet au template les Councils que nous avons selectionnés en BDD afin de les traités et de les afficher avec le langage TWIG
+            'councilsBDD' => $councils, // via la méthode render() on transmet au template les Councils que nous avons selectionnés en BDD afin de les traités et de les afficher avec le langage TWIG
+            'colonnes' => $colonnes,
+            'councils' => $councils
         ]);
     }
 
     /**
-     * Créer 1 réunion : formulaire
+     * Créer 1 réunion (formulaire) + modification de réunion
      * 
      * @Route("/council/addCouncil", name="addCouncil")
      * @Route("/council/{id}/edit", name="councilEdit")

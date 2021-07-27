@@ -10,38 +10,55 @@
         <button type="submit" class="btn btn-warning mb-5">
         <a href="{{ path('addCouncil') }}">Créer une réunion !</a>
         </button>
+        
+        {# Affichage des messages utilisateur de validation de suppresion #}
+        {% for message in app.flashes('success') %}
+            
+            <div class="col-md-4 bg-primary text-center p-2 text-white mx-auto rounded my-2">
+            {{ message }}
+            </div>
+
+        {% endfor %}
         <hr>
 
     </div>
 
 {#  #}
-    <div class="row mb-2">
-        {% for oneCouncil in CouncilsBDD %}
+    <div class="row">
+        {% for oneCouncil in councilsBDD %}
 
             {# {{ dump(oneCouncil) }} #}
 
-            <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col-md-7 p-4 d-flex flex-column">
+            <div class="col-md-4 text-center">
+                <div class="border rounded mb-4 col-md-7 p-4 d-flex flex-column">
 
-                        <h3 class="mb-0">{{ oneCouncil.titleCouncilTribe }}</h3>
+                    <h3 class="mb-0">{{ oneCouncil.titleCouncilTribe }}</h3>
 
-                        {# date() : filtre TWIG qui permet de formater une date / heure #}
-                        <div class="mb-1 text-muted">Réunion le : {{ oneCouncil.dateStart|date('d/m/Y') }} à {{ oneCouncil.hourStart|date('H:i:s') }}</div>
+                    {# date() : filtre TWIG qui permet de formater une date / heure #}
+                    <div class="mb-1 text-muted">Réunion le : {{ oneCouncil.dateStart|date('d/m/Y') }} à {{ oneCouncil.hourStart|date('H:i:s') }}</div>
 
-                        <div class="mb-1 text-muted">Fin le : {{ oneCouncil.dateEnd|date('d/m/Y') }} à {{ oneCouncil.hourEnd|date('H:i:s') }}</div>
+                    <div class="mb-1 text-muted">Fin le : {{ oneCouncil.dateEnd|date('d/m/Y') }} à {{ oneCouncil.hourEnd|date('H:i:s') }}</div>
 
-                        {# slice() : fonction TWIG permettant de retourner une partie de la chaine de caractères #}
-                        {# arguments: 1 -> ici 0, La position de départ | 2 -> ici 80, Le nombre de caractères souhaités #}
-                        {# raw : filtre, qui permet de ne pas afficher -> <p></p> #}
-                        <p class="card-text mb-auto">{{ oneCouncil.comments|slice(0,80)|raw }} [...]</p>
+                    {# slice() : fonction TWIG permettant de retourner une partie de la chaine de caractères #}
+                    {# arguments: 1 -> ici 0, La position de départ | 2 -> ici 80, Le nombre de caractères souhaités #}
+                    {# raw : filtre, qui permet de ne pas afficher -> <p></p> #}
+                    <p class="card-text mb-auto">{{ oneCouncil.comments|slice(0,80)|raw }} [...]</p>
 
-                        {# On définit le lien permettant de rediriger l'internaute vers l'affichage du détail de l'Council #}
-                        {# 'blog_shox' correspond à la route permettant l'affichage du détail de l'Council #}
-                        {# C'est une route paramétrée qui attend un ID d'un Council dans l'URL #}
-                        {# en 2ème arguement de la fonction path(), nous fournissons l'id de l'Council à transmettre dans l'URL ({'id': oneCouncil.id}) #}
-                        <a href="{{ path('councilEdit', {'id': oneCouncil.id}) }}" class="stretched-link">Modifier</a>
+                    {# On définit le lien permettant de rediriger l'internaute vers l'affichage du détail de l'Council #}
+                    {# 'blog_shox' correspond à la route permettant l'affichage du détail de l'Council #}
+                    {# C'est une route paramétrée qui attend un ID d'un Council dans l'URL #}
+                    {# en 2ème arguement de la fonction path(), nous fournissons l'id de l'Council à transmettre dans l'URL ({'id': oneCouncil.id}) #}
+                    <div class="col-md-3 p-4 d-flex gap-2">
+                        <a href="{{ path('councilEdit', {'id': oneCouncil.id}) }}" class="btn btn-dark">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+
+                        {# SUPPRESSION REUNION #}
+                        <a href="{{ path('councilRemove', {'id': oneCouncil.id}) }}" class="btn btn-danger" onclick="return(confirm('Voulez-vous réellement supprimer cet article ?'));">
+                            <i class="bi bi-trash"></i>
+                        </a>
                     </div>
+
                 </div>
             </div>
 
