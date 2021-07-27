@@ -1,0 +1,17 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}DOCUMENTS | Ajouter une catégorie de document{% endblock %}
+
+{% block body %}
+
+    <h1>{{ controller_name }}</h1>
+
+    {{ form_start(formCategoryDocumentAdd) }}
+
+    {{ form_row(formCategoryDocumentAdd.titleCategoryDocument) }}
+
+    <button type="submit" class="btn btn-warning mb-5">Ajouter une catégorie</button>
+
+{{ form_end(formCategoryDocumentAdd) }}
+
+{% endblock %}
