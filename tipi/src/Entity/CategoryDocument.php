@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Entity\Documents;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
-use App\Repository\CategoryDocumentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -18,6 +17,7 @@ class CategoryDocument
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    
     private $id;
 
     /**

@@ -18,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DocumentsController extends AbstractController
 {
+
     /**
      * @Route("/documents", name="documents")
      */
@@ -29,30 +30,24 @@ class DocumentsController extends AbstractController
     }
 
     /**
+     *
      * @Route("/CategoryDocumentAdd", name="CategoryDocumentAdd")
+     * * AJOUTER UNE CATEGORIE pour les DOCUMENTS
      */
     public function CategoryDocumentAdd(Request $request, EntityManagerInterface $manager, CategoryDocumentRepository $CategoryDocumentRepository): Response
     {
         $CategoryDocumentNew = new CategoryDocument();
-        //! erreur ici ?
-        $formCategoryDocumentAdd = $this->createForm(formCategoryDocumentAddType::class, $CategoryDocumentNew);
+        $formCategoryDocumentAdd = $this->createForm(CategoryDocumentAddType::class, $CategoryDocumentNew);
         $formCategoryDocumentAdd->handleRequest($request);
-
-        dump($request);
-
-        dump($CategoryDocumentRepository);
-
-        dump($formCategoryDocumentAdd);
 
         if($formCategoryDocumentAdd->isSubmitted() && $formCategoryDocumentAdd->isValid())
         {
-            $CategoryDocumentNew->setTitleCategoryDocument($titleCategoryDocument);
 
             $manager->persist($CategoryDocumentNew);
 
             $manager->flush();
 
-            return $this->redirectToRoute('documents');
+            return $this->redirectToRoute('CategoryDocumentAdd');
         }
 
         return $this->render('documents/CategoryDocumentAdd.html.twig', [
@@ -60,6 +55,25 @@ class DocumentsController extends AbstractController
             'formCategoryDocumentAdd' => $formCategoryDocumentAdd->createView(),
         ]);
     }
+
+    /**
+     * @Route("/ViewCategoryDocument", name="ViewCategoryDocument")
+     */
+    public function adminCategoryDocument(CategoryDocumentRepository $repo)
+    {
+        // On appel getManager afin de récupérer le noms des champs et des colonnes
+        $em = $this->getDoctrine()->getManager();
+        // récupération des champs
+        $colonnes = $em->getClassMetadata(CategoryDocument::class)->getFieldNames();
+        dump($colonnes);
+        $categoryDocument = $repo->findAll();
+        dump($categoryDocument);
+        return $this->render('documents/CategoryDocument.html.twig', [
+        'categoryDocument' => $categoryDocument,
+        'colonnes' => $colonnes
+        ]);
+    }
+
 
     /**
      * @Route("/DocumentAdd", name="DocumentAdd")

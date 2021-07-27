@@ -4,14 +4,22 @@
 
 {% block body %}
 
-    <h1>{{ controller_name }}</h1>
+    {# <h1>{{ controller_name }}</h1> #}
+
+<div class="container">
+    <div class="row">
+
+    <h1 class="text-center my-4">Ajouter une caégorie pour vos documents </h1>
 
     {{ form_start(formCategoryDocumentAdd) }}
 
-    {{ form_row(formCategoryDocumentAdd.titleCategoryDocument) }}
+        {{ form_row(formCategoryDocumentAdd.titleCategoryDocument) }}
 
-    <button type="submit" class="btn btn-warning mb-5">Ajouter une catégorie</button>
+        <button type="submit" class="btn btn-warning mb-5">Ajouter une catégorie de document</button>
 
-{{ form_end(formCategoryDocumentAdd) }}
+    {{ form_end(formCategoryDocumentAdd) }}
+
+    </div>
+</div>
 
 {% endblock %}
