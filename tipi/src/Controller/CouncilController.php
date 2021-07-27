@@ -30,21 +30,21 @@ class CouncilController extends AbstractController
 
         dump($councilRemove);
 
-        // ********* SELECTIONNE ds la BDD d'1 Council pr préparer la suppression ********* //
+        // ********* SELECTIONNE ds la BDD des champs de la table Council pr préparer la suppression ********* //
         // via le manager qui permet de manipuler la BDD (insert, upadte, delete etc...), on execute la méthode getClassMetadata() afin de selectionner les méta données (primary key ,not null, noms des champs etc..) d'une entité (donc d'une table SQL), pour selectionner le nom des champs/colonnes de la table grace à la méthode getFieldNames()
         // getColumnMeta()
         $colonnes = $manager->getClassMetadata(Council::class)->getFieldNames();
         dump($colonnes);
 
         // ********* SELECTIONNE ds la BDD des CouncilS pr les afficher ********* //
-        // findAll(): SELECT * FROM Council + FETCHALL
-        // $Councils : tableau ARRAY multidimentionnel contenant l'ensemble des Councils stockés ds la BDD
-        // $councilsUser = $this->findBy(); // findBy, findOneBy ou countBy ->getUser()
-        // dump($councilsUser);
-        $user = $this->getUser();
+        // récupère l'id de l'utilisateur connecter pour récupérer ensuite ses reunions
+        $user = $this->getUser(); // findBy, findOneBy ou countBy ->getUser()
         dump($user->getId());
 
-        $councils = $repoCouncils->findBy(array("user" => $user));
+        // findAll(): SELECT * FROM Council + FETCHALL
+        // findBy() : permet d'appeller les reunions de l'utilisateur connecté
+        // $Councils : tableau ARRAY multidimentionnel contenant l'ensemble des Councils stockés ds la BDD
+        $councils = $repoCouncils->findBy(array("user" => $user)); 
         dump($councils); // dump(): outil de debug propre à Symfony, on affiche se que contient $Councils
         
 
