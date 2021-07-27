@@ -7,8 +7,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Documents;
+use App\Form\DocumentAddType;
 use App\Entity\CategoryDocument;
 use App\Form\CategoryDocumentAddType;
+use App\Repository\DocumentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\CategoryDocumentRepository;
@@ -58,6 +61,7 @@ class DocumentsController extends AbstractController
 
     /**
      * @Route("/ViewCategoryDocument", name="ViewCategoryDocument")
+     * * VUE ALL CATEGORY
      */
     public function adminCategoryDocument(CategoryDocumentRepository $repo)
     {
@@ -65,9 +69,9 @@ class DocumentsController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         // récupération des champs
         $colonnes = $em->getClassMetadata(CategoryDocument::class)->getFieldNames();
-        dump($colonnes);
+        // dump($colonnes);
         $categoryDocument = $repo->findAll();
-        dump($categoryDocument);
+        // dump($categoryDocument);
         return $this->render('documents/CategoryDocument.html.twig', [
         'categoryDocument' => $categoryDocument,
         'colonnes' => $colonnes
@@ -76,12 +80,34 @@ class DocumentsController extends AbstractController
 
 
     /**
-     * @Route("/DocumentAdd", name="DocumentAdd")
+     * @Route("/documentAdd", name="DocumentAdd")
+     * * AJOUTER UN DOCUMENT
      */
-    public function DocumentAdd(): Response
+    public function DocumentAdd(Request $request, EntityManagerInterface $manager, DocumentsRepository $DocumentsRepository): Response
     {
+        $DocumentNew = new Documents();
+        $formDocumentAdd = $this->createForm(DocumentAddType::class, $DocumentNew);
+        $formDocumentAdd->handleRequest($request);
+
+        if($formDocumentAdd->isSubmitted() && $formDocumentAdd->isValid())
+        {
+            $user = $this->getUser();
+            //* Ajout de la date now
+            $DocumentNew->setDate(new \DateTime());
+            
+            //! Ajout d'un nom de fichier temporaire
+            $DocumentNew->setFileTitle('temp');
+
+            $DocumentNew->setUser($user);
+            $manager->persist($DocumentNew);
+            $manager->flush();
+
+            return $this->redirectToRoute('DocumentAdd');
+        }
+
         return $this->render('documents/DocumentAdd.html.twig', [
             'controller_name' => 'Ajouter un document',
+            'formDocumentAdd' => $formDocumentAdd->createView()
         ]);
     }
 

@@ -28,8 +28,9 @@ class Documents
     /**
      * @ORM\ManyToOne(targetEntity=CategoryDocument::class, inversedBy="documents")
      * @ORM\JoinColumn(nullable=false)
+     * ! TitlecategoryDocument -> categoryDocumentTitle
      */
-    private $titleCategoryDocument;
+    private $categoryDocumentTitle;
 
     /**
      * @ORM\Column(type="datetime")
@@ -78,11 +79,13 @@ class Documents
         return $this;
     }
 
+    //! getTitleCategoryDocument -> getCategoryDocumentTitle
     public function getTitleCategoryDocument(): ?CategoryDocument
     {
         return $this->titleCategoryDocument;
     }
 
+    //! setTitleCategoryDocument -> setCategoryDocumentTitle
     public function setTitleCategoryDocument(?CategoryDocument $titleCategoryDocument): self
     {
         $this->titleCategoryDocument = $titleCategoryDocument;

@@ -11,7 +11,8 @@
         <tr>
             {% for data in colonnes %}
             {% if data != 'id' %}
-            <th>{{ data }}</th>
+            {# <th>{{ data }}</th> #}
+            <th>CATEGORY</th>
             {% endif %}
             {% endfor %}
             {# <th>Catégorie</th> #}
@@ -20,6 +21,7 @@
         </tr>
         {% for key, data in categoryDocument %}
         <tr>
+        {# //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #}
             <td>{{ data.titleCategoryDocument }}</td>
             {# <td><a href="{{ path('edit_CategoryDocument', {'id': data.id }) }}" class="text-dark"><i class="fas fa-edit fa-1x">EDIT</i></a></td> #}
             <td>edit</td>

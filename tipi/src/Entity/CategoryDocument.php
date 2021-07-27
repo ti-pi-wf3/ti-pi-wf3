@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\Documents;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
+use App\Repository\CategoryDocumentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -35,6 +36,11 @@ class CategoryDocument
         $this->documents = new ArrayCollection();
     }
 
+    //! Object of class App\Entity\CategoryDocument could not be converted to string
+    public function __toString() {
+        return $this->getTitleCategoryDocument();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,25 +66,25 @@ class CategoryDocument
         return $this->documents;
     }
 
-    public function addDocument(Documents $document): self
-    {
-        if (!$this->documents->contains($document)) {
-            $this->documents[] = $document;
-            $document->setTitleCategoryDocument($this);
-        }
+    // public function addDocument(Documents $document): self
+    // {
+    //     if (!$this->documents->contains($document)) {
+    //         $this->documents[] = $document;
+    //         $document->setTitleCategoryDocument($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeDocument(Documents $document): self
-    {
-        if ($this->documents->removeElement($document)) {
-            // set the owning side to null (unless already changed)
-            if ($document->getTitleCategoryDocument() === $this) {
-                $document->setTitleCategoryDocument(null);
-            }
-        }
+    // public function removeDocument(Documents $document): self
+    // {
+    //     if ($this->documents->removeElement($document)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($document->getTitleCategoryDocument() === $this) {
+    //             $document->setTitleCategoryDocument(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }
