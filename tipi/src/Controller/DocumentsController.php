@@ -29,7 +29,7 @@ class DocumentsController extends AbstractController
 
     /**
      *
-     * @Route("/CategoryDocumentAdd", name="CategoryDocumentAdd")
+     * @Route("/categoryDocumentAdd", name="CategoryDocumentAdd")
      * * AJOUTER UNE CATEGORIE pour les DOCUMENTS
      */
     public function CategoryDocumentAdd(Request $request, EntityManagerInterface $manager): Response
@@ -48,14 +48,14 @@ class DocumentsController extends AbstractController
             return $this->redirectToRoute('CategoryDocumentAdd');
         }
 
-        return $this->render('documents/CategoryDocumentAdd.html.twig', [
+        return $this->render('documents/categoryDocumentAdd.html.twig', [
             'controller_name' => 'Ajouter une catégorie de document',
             'formCategoryDocumentAdd' => $formCategoryDocumentAdd->createView(),
         ]);
     }
 
     /**
-     * @Route("/ViewCategoryDocument", name="ViewCategoryDocument")
+     * @Route("/viewCategoryDocument", name="viewCategoryDocument")
      * * VUE ALL CATEGORY
      */
     public function viewCategoryDocument(CategoryDocumentRepository $repo): Response
@@ -67,13 +67,13 @@ class DocumentsController extends AbstractController
         // dump($colonnes);
         $categoryDocument = $repo->findAll();
         // dump($categoryDocument);
-        return $this->render('documents/CategoryDocument.html.twig', [
+        return $this->render('documents/categoryDocument.html.twig', [
             'categoryDocument' => $categoryDocument,
             'colonnes' => $colonnes
         ]);
     }
 
-    /**
+        /**
      * @Route("/documentAdd", name="DocumentAdd")
      * * AJOUTER UN DOCUMENT
      */
@@ -100,18 +100,18 @@ class DocumentsController extends AbstractController
             return $this->redirectToRoute('DocumentAdd');
         }
 
-        return $this->render('documents/DocumentAdd.html.twig', [
+        return $this->render('documents/documentAdd.html.twig', [
             'controller_name' => 'Ajouter un document',
             'formDocumentAdd' => $formDocumentAdd->createView()
         ]);
     }
 
     /**
-     * @Route("/FileAdd", name="FileAdd")
+     * @Route("/fileAdd", name="fileAdd")
      */
     public function FileAdd(): Response
     {
-        return $this->render('documents/FileAdd.html.twig', [
+        return $this->render('documents/fileAdd.html.twig', [
             'controller_name' => 'Ajouter un fichier',
         ]);
     }
