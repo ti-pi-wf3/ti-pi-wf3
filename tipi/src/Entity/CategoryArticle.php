@@ -29,6 +29,10 @@ class CategoryArticle
      */
     private $articles;
 
+    public function __toString()
+    {
+        return $this->getTitleCategoryArticle();
+    }
     public function __construct()
     {
         $this->articles = new ArrayCollection();

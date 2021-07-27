@@ -1,0 +1,29 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Hello Liste de trucs{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="row d-flex">
+
+            {% for oneArticle in articlesBDD %}
+
+            <div class="col-2 mx-auto">
+                <h4>{{ oneArticle.categoryArticle }}</h4>
+                <p>{{ oneArticle.titleArticle }}</p>
+                <a href="">Ajouter un Article</a>
+            </div>
+
+            {% endfor %}
+
+                <div>
+                <p>Retour</p>
+                </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
