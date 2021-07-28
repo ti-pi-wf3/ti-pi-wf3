@@ -1,0 +1,27 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}DOCUMENTS | Ajouter un document{% endblock %}
+
+{% block body %}
+
+    {# <h1>{{ controller_name }}</h1> #}
+
+    <div class="container">
+        <div class="row">
+
+            <h1 class="text-center my-4">Ajouter un document </h1>
+
+            {{ form_start(formDocumentAdd) }}
+
+            {# {{ form_row(formDocumentAdd.fileTitle) }} #}
+
+
+
+            <button type="submit" class="btn btn-warning mb-5">Ajouter un document</button>
+
+            {{ form_end(formDocumentAdd) }}
+
+        </div>
+    </div>
+
+{% endblock %}

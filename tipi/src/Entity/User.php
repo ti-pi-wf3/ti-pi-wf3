@@ -86,13 +86,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $indPhone;
 
     /**
+     * @ORM\OneToMany(targetEntity=Documents::class, mappedBy="user")
+     */
+    private $documents;
+
+    /**
      * @ORM\OneToMany(targetEntity=ToDoList::class, mappedBy="user")
      */
     private $toDoLists;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Repertoire::class, mappedBy="user")
+     */
+    private $repertoires;
+
     public function __construct()
     {
+		$this->documents = new ArrayCollection();
         $this->toDoLists = new ArrayCollection();
+        $this->repertoires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -286,12 +298,45 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
+	/**
+     * @return Collection|Documents[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(Documents $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setUser($this);
+			
+        }
+
+        return $this;
+    }			
+
+
+	/**
      * @return Collection|ToDoList[]
      */
     public function getToDoLists(): Collection
     {
         return $this->toDoLists;
+    }
+
+    public function removeDocument(Documents $document): self
+    {
+        if ($this->documents->removeElement($document)) {
+            // set the owning side to null (unless already changed)
+            if ($document->getUser() === $this) {
+                $document->setUser(null);
+
+            }
+        }
+
+        return $this;
     }
 
     public function addToDoList(ToDoList $toDoList): self
@@ -310,9 +355,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($toDoList->getUser() === $this) {
                 $toDoList->setUser(null);
+
             }
         }
 
         return $this;
     }
+
+    /**
+     * @return Collection|Repertoire[]
+     */
+    public function getRepertoires(): Collection
+    {
+        return $this->repertoires;
+    }
+    public function addRepertoire(Repertoire $repertoire): self
+    {
+        if (!$this->repertoires->contains($repertoire)) {
+            $this->repertoires[] = $repertoire;
+            $repertoire->setUser($this);
+        }
+        return $this;
+    }
+    public function removeRepertoire(Repertoire $repertoire): self
+    {
+        if ($this->repertoires->removeElement($repertoire)) {
+            // set the owning side to null (unless already changed)
+            if ($repertoire->getUser() === $this) {
+                $repertoire->setUser(null);
+            }
+        }
+        return $this;
+    }
+
 }
