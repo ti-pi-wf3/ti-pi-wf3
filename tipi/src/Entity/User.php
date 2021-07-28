@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\Tribe;
 use App\Entity\ToDoList;
 use App\Entity\Documents;
+use App\Entity\Repertoire;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
@@ -87,7 +88,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $indPhone;
 
-    /**
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getTribeId(): ?Tribe
+    {
+        return $this->tribeId;
+    }
+
+    public function setTribeId(?Tribe $tribeId): self
+    {
+        $this->tribeId = $tribeId;
+
+        return $this;
+    }
+
+        /**
      * @ORM\OneToMany(targetEntity=Documents::class, mappedBy="user")
      */
     private $documents;
@@ -107,23 +126,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 		$this->documents = new ArrayCollection();
         $this->toDoLists = new ArrayCollection();
         $this->repertoires = new ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getTribeId(): ?Tribe
-    {
-        return $this->tribeId;
-    }
-
-    public function setTribeId(?Tribe $tribeId): self
-    {
-        $this->tribeId = $tribeId;
-
-        return $this;
     }
 
     /**
@@ -300,7 +302,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-<<<<<<< HEAD
 	/**
      * @return Collection|Documents[]
      */
@@ -392,6 +393,3 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 }
-=======
-}
->>>>>>> clax-repertoire
