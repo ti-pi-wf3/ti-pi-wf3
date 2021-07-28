@@ -16,17 +16,7 @@ class AddMemberType extends AbstractType
     {
         $builder
             // ->add('role')
-            ->add('sexe', CollectionType::class, [
-                'label' => false,
-                'label_format' => false,
-                'entry_type' => ChoiceType::class, 
-                'entry_options' => [
-                    'choices' => [
-                        'feminin' => 'f',
-                        'masculin' => 'm'
-                    ]
-                ]
-            ])
+            ->add('sexe')
             ->add('password',RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',
