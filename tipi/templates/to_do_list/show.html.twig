@@ -19,7 +19,10 @@
             <h5 class="title mt-2">{{oneToDoList.titleTask}}</h5>
             <small class="date">Crée le {{oneToDoList.date|date('d/m/Y')}} à {{oneToDoList.date|date('H:i')}}</small>
             <div class="d-flex flex-row ">
+                <div class="d-flex flex-row ">
                 <a class="iconLink" href="{{ path('remove_to_do_list' , {'id' : oneToDoList.id}) }}"><i class="bi bi-trash"></i></a>
+                <a class="iconLink" href="{{ path('to_do_list_edit' , {'id' : oneToDoList.id}) }}"><i class="bi bi-pencil mx-2"></i></a>
+            </div>
                 <a class="iconLink" href="{{ path('to_do_list_edit' , {'id' : oneToDoList.id}) }}"><i class="bi bi-pencil mx-2"></i></a>
             </div>
             <hr>
