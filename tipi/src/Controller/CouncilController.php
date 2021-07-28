@@ -144,7 +144,7 @@ class CouncilController extends AbstractController
         // $council = $repoCouncil->find($id); // 6
         dump($request->server->get('DOCUMENT_ROOT'));
 
-        $this->addFlash("success", "Félicitations, Vous avez créer une réunion !");
+        $this->addFlash("success", "Félicitations, Vous avez créé une réunion !");
 
         // ****** ENVOIS les infos au TEMPLATE
         // render() : méthode qui permet d'envoyer les info receptionner au dessu

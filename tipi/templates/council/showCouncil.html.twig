@@ -8,8 +8,8 @@
 
     {# {{ dump(councilBDD) }} #}
 
-    <h1 class="fst-italic text-center my-5">Voici votre Réunion !</h1>
-    
+    <h4 class='title text-center mb-5'>Voici votre Réunion !</h4>
+
     {# AFFICHAGE MESSAGE VALIDATION UTILISATEUR #}
     {# app : objet TWIG qui contient toutes les données de la session en cours, du fichier de session #}
     {# Flashes() : méthode permettant d'accèder en session au message flash utilisateur déclarés ds le controller, il faut lui fournir en argument l'identifiant (sucsess) #}
@@ -19,32 +19,32 @@
         {{ message }}
         </div>
     {% endfor %}
+    <hr>
     
-    <div class="col-md-6 mx-auto text-center p-2">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative p-3">
+    <div class="row mb-2 d-flex border rounded overflow-hidden shadow-sm justify-content-center flex-wrap">
+    <div class="col-md-6 mx-auto text-center p-4">
+        {# <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative p-3"> #}
 
-            <h3 class="mb-0">{{ councilBDD.titleCouncilTribe }}</h3>
+        <h3 class="title mt-2">{{ councilBDD.titleCouncilTribe }}</h3>
 
-            <div class="mb-1 text-muted">Réunion le : {{ councilBDD.dateStart|date('d/m/Y') }} à {{ councilBDD.hourStart|date('H:i') }}</div>
+        <small class="date">Réunion le : {{ councilBDD.dateStart|date('d/m/Y') }} à {{ councilBDD.hourStart|date('H:i') }}</small>
 
-            <div class="mb-1 text-muted">Fin le : {{ councilBDD.dateEnd|date('d/m/Y') }} à {{ councilBDD.hourEnd|date('H:i') }}</div>
+        <small class="date">Fin le : {{ councilBDD.dateEnd|date('d/m/Y') }} à {{ councilBDD.hourEnd|date('H:i') }}</small>
+        <hr>
 
-            <p class="card-text mb-auto">{{ councilBDD.comments}}</p>
+        <p class="card-text mb-auto">{{ councilBDD.comments}}</p>
 
-            {# la fonction path() attend en argument le NOM de la route définit ds le fichier Controller.php ds l'annonce de la @Route("", name="NOM_ROUTE") #}
-            {# <a href="{{ path('council') }}">Retour aux réunions !</a> #}
-            {# <a href="{{ path('councilEdit', {"id": councilBDD.id}) }}">Modifier</a> #}
-            <a href="{{ path('council') }}"><input type="button" class="button" value="Retour aux réunions !"></a>
-            <a href="{{ path('councilEdit', {"id": councilBDD.id}) }}"><input type="button" class="buttonR" value="Modifier"></a>
 
-            {# SUPPRESSION REUNION #}
-            {# <a href="{{ path('admin_article_remove', {'id': oneArticle.id}) }}" class="btn btn-danger" onclick="return(confirm('Voulez-vous réellement supprimer cet article ?'));">
-                <i class="bi bi-trash"></i>
-            </a> #}
-
-        </div>
+    </div>  
 
     </div>
+        {# la fonction path() attend en argument le NOM de la route définit ds le fichier Controller.php ds l'annonce de la @Route("", name="NOM_ROUTE") #}
+        {# <a href="{{ path('council') }}">Retour aux réunions !</a> #}
+        {# <a href="{{ path('councilEdit', {"id": councilBDD.id}) }}">Modifier</a> #}
+        <div class="col-md-6 mx-auto text-center m-4 p-4">
+            <a href="{{ path('council') }}"><input type="button" class="button" value="Retour aux réunions !"></a>
+            <a href="{{ path('councilEdit', {"id": councilBDD.id}) }}"><input type="button" class="buttonR" value="Modifier"></a>
+        </div>
     
 
 {% endblock %}

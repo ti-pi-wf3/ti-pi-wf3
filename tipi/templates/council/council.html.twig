@@ -4,64 +4,66 @@
 
 {% block body %}
 
-    <div class="text-center my-4">
-        <h1>{{ controller_homeCouncilTitre }}</h1>
+    {# <h1>{{ controller_homeCouncilTitre }}</h1> #}
 
-        <a href="{{ path('addCouncil') }}"><input type="button" class="button" value="Créer une réunion !"></a>
+    <h4 class='title text-center mb-5'>Réunions</h4>
+        {# <a href="{{ path('addCouncil') }}"><input type="button" class="button" value="Créer une réunion !"></a> #}
         
-        {# Affichage des messages utilisateur de validation de suppresion #}
-        {% for message in app.flashes('success') %}
-            
-            <div class="col-md-4 bg-primary text-center p-2 text-white mx-auto rounded my-2">
-            {{ message }}
-            </div>
+    {# Affichage des messages utilisateur de validation de suppresion #}
+    {% for message in app.flashes('success') %}
+        
+        <div class="col-md-4 bg-primary text-center p-2 text-white mx-auto rounded my-2">
+        {{ message }}
+        </div>
 
-        {% endfor %}
-        <hr>
+    {% endfor %}
+    <hr>
 
-    </div>
+    <div class="row mb-2 d-flex justify-content-center flex-wrap ">
 
-{#  #}
-    <div class="row">
-        {% for oneCouncil in councilsBDD %}
+        {#  #}
+            {% for oneCouncil in councilsBDD %}
 
-            {# {{ dump(oneCouncil) }} #}
+                {# {{ dump(oneCouncil) }} #}
 
-            <div class="col-md-4 text-center">
-                <div class="border rounded mb-4 col-md-7 p-4 d-flex flex-column">
+                <div class="col-2 mx-2 my-2 task">
 
-                    <h3 class="mb-0">{{ oneCouncil.titleCouncilTribe }}</h3>
+                    <h5 class="title mt-2">{{ oneCouncil.titleCouncilTribe }}</h5>
 
                     {# date() : filtre TWIG qui permet de formater une date / heure #}
-                    <div class="mb-1 text-muted">Réunion le : {{ oneCouncil.dateStart|date('d/m/Y') }} à {{ oneCouncil.hourStart|date('H:i:s') }}</div>
+                    <small class="date">Réunion le : {{ oneCouncil.dateStart|date('d/m/Y') }} à {{ oneCouncil.hourStart|date('H:i:s') }}</small>
 
-                    <div class="mb-1 text-muted">Fin le : {{ oneCouncil.dateEnd|date('d/m/Y') }} à {{ oneCouncil.hourEnd|date('H:i:s') }}</div>
+                    <small class="date">Fin le : {{ oneCouncil.dateEnd|date('d/m/Y') }} à {{ oneCouncil.hourEnd|date('H:i:s') }}</small>
+
+                    <div class="d-flex flex-row ">
+                        {# On définit le lien permettant de rediriger l'internaute vers l'affichage du détail de l'Council #}
+                        {# 'blog_shox' correspond à la route permettant l'affichage du détail de l'Council #}
+                        {# C'est une route paramétrée qui attend un ID d'un Council dans l'URL #}
+                        {# en 2ème arguement de la fonction path(), nous fournissons l'id de l'Council à transmettre dans l'URL ({'id': oneCouncil.id}) #}
+                        <a class="iconLink" href="{{ path('councilRemove', {'id': oneCouncil.id}) }}" onclick="return(confirm('Voulez-vous réellement supprimer cet article ?'));"><i class="bi bi-trash"></i></a>
+                        
+                        {# SUPPRESSION REUNION #}
+                        <a class="iconLink" href="{{ path('councilEdit', {'id': oneCouncil.id}) }}"><i class="bi bi-pencil mx-2"></i></a>
+                    </div>
+                    <hr>
 
                     {# slice() : fonction TWIG permettant de retourner une partie de la chaine de caractères #}
                     {# arguments: 1 -> ici 0, La position de départ | 2 -> ici 80, Le nombre de caractères souhaités #}
                     {# raw : filtre, qui permet de ne pas afficher -> <p></p> #}
                     <p class="card-text mb-auto">{{ oneCouncil.comments|slice(0,80)|raw }} [...]</p>
 
-                    {# On définit le lien permettant de rediriger l'internaute vers l'affichage du détail de l'Council #}
-                    {# 'blog_shox' correspond à la route permettant l'affichage du détail de l'Council #}
-                    {# C'est une route paramétrée qui attend un ID d'un Council dans l'URL #}
-                    {# en 2ème arguement de la fonction path(), nous fournissons l'id de l'Council à transmettre dans l'URL ({'id': oneCouncil.id}) #}
-                    <div class="col-md-3 p-4 d-flex gap-2">
-                        <a class="iconLink" href="{{ path('councilEdit', {'id': oneCouncil.id}) }}">
-                            <i class="bi bi-pencil"></i>
-                        </a>
-
-                        {# SUPPRESSION REUNION #}
-                        <a class="iconLink" href="{{ path('councilRemove', {'id': oneCouncil.id}) }}" onclick="return(confirm('Voulez-vous réellement supprimer cet article ?'));">
-                            <i class="bi bi-trash"></i>
-                        </a>
-                    </div>
-
                 </div>
-            </div>
 
-        {% endfor %}
+            {% endfor %}
+
+            <div class="col-2">
+                <a class="mb-5" href="{{ path('addCouncil') }}">
+                    <div class="plus" >
+                    </div>
+                </a>
+            </div>
+            <div class="col-10"></div>
+        {#  #}
     </div>
-{#  #}
 
 {% endblock %}

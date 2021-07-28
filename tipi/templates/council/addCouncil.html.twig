@@ -4,42 +4,42 @@
 
 {% block body %}
 
-<div class="container">
-    <div class="col-12">
-        <h1 class="fst-italic text-center my-5">
+<div class="col-4 mx-auto pt-5 text-center">
+    <h3 class="text-center title">
         {# Si la condition IF renvoie TRUE, cela veut dire que editMode(fichier BlogController.php) contient un ID d'un article, alors c'est une modification #}
         {% if editCouncil %}
-            Modification d'une Réunion
+            Modifier une réunion
         {# Sinon editMode ne contient aucun ID d'article, il renvoi FALSE, alors c'est une insertion, on entre dans le ESLE #}
         {% else %}
-            Création d'une Réunion
+            Ajouter une Réunion
         {% endif %}
-    </h1>
+    </h3>
+    <hr>
 
-        {{ form_start(formAddCouncil) }}
+    {{ form_start(formAddCouncil) }}
 
-            {{ form_row(formAddCouncil.titleCouncilTribe) }}
+        {{ form_row(formAddCouncil.titleCouncilTribe, {'label': 'Titre'}) }}
 
-            {{ form_row(formAddCouncil.comments) }}
+        {{ form_row(formAddCouncil.comments, {'label': 'Contenu'}) }}
 
-            {{ form_row(formAddCouncil.dateStart) }}
+        {{ form_row(formAddCouncil.dateStart, {'label': 'Date début événement'}) }}
 
-            {{ form_row(formAddCouncil.dateEnd) }}
+        {{ form_row(formAddCouncil.dateEnd, {'label': 'Date fin événement'}) }}
 
-            {{ form_row(formAddCouncil.hourStart) }}
+        {{ form_row(formAddCouncil.hourStart, {'label': 'Heure début'}) }}
 
-            {{ form_row(formAddCouncil.hourEnd) }}
+        {{ form_row(formAddCouncil.hourEnd, {'label': 'Heure fin'}) }}
 
-            <input type="submit" class="button" 
-            {% if editCouncil %}
-                value="Enregistrer les modifications"
-            {% else %}
-                value="Enregistrer"
-            {% endif %}
-            >
+        <input type="submit" class="button" 
+        {% if editCouncil %}
+            value="Enregistrer les modifications"
+        {% else %}
+            value="Enregistrer"
+        {% endif %}
+        >
+        
 
-        {{ form_end(formAddCouncil) }}
-
-    </div>
+    {{ form_end(formAddCouncil) }}
 </div>
+
 {% endblock %}
