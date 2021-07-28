@@ -15,14 +15,14 @@
     {# Flashes() : méthode permettant d'accèder en session au message flash utilisateur déclarés ds le controller, il faut lui fournir en argument l'identifiant (sucsess) #}
     {# message : variable de reception que nous définissons, qui receptionne un message utilisateur par tour de boucle #}
     {% for message in app.flashes("success") %}
-        <div class="col-md-4 mx-auto alert alert-primary text-center p-2">
+        <div class="col-md-4 mx-auto bg-dark text-white text-center p-2">
         {{ message }}
         </div>
     {% endfor %}
     <hr>
     
     <div class="row mb-2 d-flex border rounded overflow-hidden shadow-sm justify-content-center flex-wrap">
-    <div class="col-md-6 mx-auto text-center p-4">
+    <div class="col-md-6 mx-auto text-center p-6">
         {# <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative p-3"> #}
 
         <h3 class="title mt-2">{{ councilBDD.titleCouncilTribe }}</h3>
