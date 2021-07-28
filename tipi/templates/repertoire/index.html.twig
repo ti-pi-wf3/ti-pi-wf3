@@ -40,18 +40,18 @@
 
     {{ form_row(formRepertoire.emailPro) }}
 
-    {{ form_row(formRepertoire.picture) }}
+    {{ form_row(formRepertoire.pictureFile) }}
 
     {# {{ form_row(formRepertoire.user) }} #}
 
 
-    <button type="submit" class="btn btn-warning mb-5">
+    <input type="submit" class="button"
         {% if editContact %}  
-            Je modifie !
+            value="Modifier"
         {% else %}
-            J'ajoute !
+            value="Ajouter"
         {% endif %}
-        </button>
+        >
 
 {{ form_end(formRepertoire) }}
 

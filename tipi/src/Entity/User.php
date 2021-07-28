@@ -85,16 +85,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $indPhone;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Repertoire::class, mappedBy="user")
-     */
-    private $repertoires;
-
-    public function __construct()
-    {
-        $this->repertoires = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -286,33 +276,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Repertoire[]
-     */
-    public function getRepertoires(): Collection
-    {
-        return $this->repertoires;
-    }
-
-    public function addRepertoire(Repertoire $repertoire): self
-    {
-        if (!$this->repertoires->contains($repertoire)) {
-            $this->repertoires[] = $repertoire;
-            $repertoire->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRepertoire(Repertoire $repertoire): self
-    {
-        if ($this->repertoires->removeElement($repertoire)) {
-            // set the owning side to null (unless already changed)
-            if ($repertoire->getUser() === $this) {
-                $repertoire->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 }

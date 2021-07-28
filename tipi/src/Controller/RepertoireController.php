@@ -33,9 +33,9 @@ class RepertoireController extends AbstractController
         if($formRepertoire->isSubmitted() && $formRepertoire->isValid())
         {
             if(!$repertoire->getId())
-                $word = 'enregistrée';
+                $word = 'ajouté';
             else
-                $word = 'modifiée';
+                $word = 'modifié';
 
             dump($repertoire);
             $user = $this->getUser(); // recupérer la clé étrangère
@@ -52,7 +52,7 @@ class RepertoireController extends AbstractController
         }
 
         return $this->render('repertoire/index.html.twig',[
-            'formRepertoire' => $formRepertoire->createView(),
+            'formRepertoire' => $formRepertoire->createView(), //créer la vue du formulaire
             'editContact' => $repertoire->getId()
         ]);
         
@@ -68,10 +68,8 @@ class RepertoireController extends AbstractController
         // dump($repoRepertoire);
         // dump($removeContact);
 
-        $colonne = $manager->getClassMetadata(Repertoire::class)->getFieldNames();
+        $colonne = $manager->getClassMetadata(Repertoire::class)->getFieldNames();//$colonne recupère les catégories (champs)
         $repertoire = $repoRepertoire->findBy(array(), array("lastName" => "ASC"));//SELECT * FROM + FETCHALL...
-
-        // dump($request->server->get('DOCUMENT_ROOT'));
     
         
         if($removeContact) //suppression
@@ -84,10 +82,9 @@ class RepertoireController extends AbstractController
         }
 
             return $this->render('repertoire/show.html.twig',[
-                'contacts'=> $colonne,
+                'colonne'=> $colonne,
                 'repertoiresBDD' => $repertoire,
                 'contact' => $removeContact,
-                // 'editContact' => $repertoire
             ]);
     
     }

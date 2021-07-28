@@ -6,6 +6,7 @@ use App\Entity\Repertoire;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class RepertoireType extends AbstractType
 {
@@ -25,7 +26,7 @@ class RepertoireType extends AbstractType
             ->add('indPhonePro')
             ->add('email')
             ->add('emailPro')
-            ->add('picture')
+            ->add('pictureFile', FileTYpe::class,['required'=>false])
             // ->add('user')
         ;
     }

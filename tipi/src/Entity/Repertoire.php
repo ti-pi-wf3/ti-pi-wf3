@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\RepertoireRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
- * @ORM\Entity(repositoryClass=RepertoireRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\RepertoireRepository")
+ * @Vich\Uploadable
  */
 class Repertoire
 {
@@ -92,6 +95,31 @@ class Repertoire
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $picture;
+
+    /**
+     * @Vich\UploadableField(mapping="products_image", fileNameProperty="picture")
+     */
+    private $pictureFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
+
+
+    public function getPictureFile(): ?File 
+    {
+        return $this->pictureFile;
+    }
+
+    public function setPictureFile(?File $pictureFile = null)
+    {
+        $this->pictureFile = $pictureFile;
+        if($this->pictureFile instanceof UploadedFile){
+            $this->updated_at = new \DateTime('now');
+        }
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -277,4 +305,17 @@ class Repertoire
 
         return $this;
     }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
 }
