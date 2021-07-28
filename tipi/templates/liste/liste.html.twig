@@ -18,8 +18,8 @@
                         {% for oneArticle in oneCat.articles %}
     
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault" name="{{ oneCat.titleCategoryArticle }}" value="{{ oneArticle.titleArticle }}">
+                            <input class="form-check-input" type="checkbox" name="{{ oneCat.titleCategoryArticle }}" value="{{ oneArticle.titleArticle }}" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
                                 <p>{{ oneArticle.titleArticle }}</p>
                             </label>
                         </div>
