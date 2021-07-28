@@ -20,23 +20,15 @@
 
         <div class="container">
             <header class="blog-header py-3 mb-5">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-10 pt-1 d-flex flex-nowrap align-items-center justify-content-around">
-
-                        <a href="{{ path('user') }}"><img src="assets\logosmall.png" alt="Tipi logo"></a>
-                        
-                        <a href="" class="menu">Documents</a>
-
-                        <a href="" class="menu">Courses</a>
-
-                        <a href="" class="menu">Répertoire</a>
-
-                        <a href="{{ path('show_to_do_list') }}" class="menu">Mémos</a>
-
-                        <a href="" class="menu">Réunion</a>
-
-                        <a href="" class="menu">Gérer ma tribu</a>
-                    </div>
+                <div class="row ">
+                    <div class="col-5">
+                        <img src="assets\logosmall.png" alt="Tipi logo">
+                    </div> 
+                    <div class="col-2"></div>
+                    <div class="col-5 d-flex justify-content-end">
+                        <input type="button" href="#" class="button me-2" value="Mon Compte">
+                        <a href="{{ path('app_logout') }}"><input type="button" class="buttonR" value="Se Déconnecter"></a>
+                    
                 </div>
             </header>
         
@@ -47,7 +39,7 @@
         {% endblock %}
 
         <footer>
-        
+                
         </footer>
         </div>
         {% block javascripts %}
