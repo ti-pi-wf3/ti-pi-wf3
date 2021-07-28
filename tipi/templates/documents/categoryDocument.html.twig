@@ -6,6 +6,15 @@
 
     {# <h1>{{ controller_name }}</h1> #}
 
+    {% for message in app.flashes("success") %}
+        <div class="col-md-4 mx-auto alert alert-primary text-center p-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="text-center pb-4"><a href="{{ path('categoryDocumentAdd') }}" class="text-dark">Ajouter une catégorie</a></div>
+
+
     <table class="table table-bordered text-center">
 
         <tr>
@@ -21,12 +30,11 @@
         </tr>
         {% for key, data in categoryDocument %}
             <tr>
-                {# //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #}
                 <td>{{ data.titleCategoryDoc }}</td>
-                {# <td><a href="{{ path('edit_CategoryDocument', {'id': data.id }) }}" class="text-dark"><i class="fas fa-edit fa-1x">EDIT</i></a></td> #}
-                <td>edit</td>
-                {# <td><a href="{{ path('delete_categoryDocument', {'id': data.id })}}" class="text-dark"><i class="fas fa-trash-alt fa-1x"></i></a></td> #}
-                <td>remove</td>
+
+                <td><a href="{{ path('categoryDocumentEdit', {'id': data.id }) }}" class="text-dark"><i class="bi bi-pencil"></i></a></td>
+
+                <td><a href="{{ path('categoryDocumentDelete', {'id': data.id })}}" class="text-dark"><i class="bi bi-trash"></i></a></td>
             </tr>
         {% endfor %}
 
