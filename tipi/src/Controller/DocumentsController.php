@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Form\CategoryDocumentAddType;
 use App\Form\DocumentAddType;
 use App\Repository\CategoryDocumentRepository;
+use App\Repository\DocumentsRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,7 +33,7 @@ class DocumentsController extends AbstractController
      * @Route("/categoryDocumentAdd", name="categoryDocumentAdd")
      * @Route("/categoryDocumentEdit/{id}", name="categoryDocumentEdit")
      */
-    public function CategoryDocumentAdd(CategoryDocument $CategoryDocumentNew = null, Request $request, EntityManagerInterface $manager): Response
+    public function CategoryDocumentAddEdit(CategoryDocument $CategoryDocumentNew = null, Request $request, EntityManagerInterface $manager): Response
     {
         if(!$CategoryDocumentNew)
         {
@@ -48,7 +49,7 @@ class DocumentsController extends AbstractController
             $manager->persist($CategoryDocumentNew);
             $manager->flush();
 
-            $this->addFlash('success', 'Le nom de la catégorie a bien été enregistrés !');
+            $this->addFlash('success', 'La catégorie a bien été ajouté !');
 
             return $this->redirectToRoute('viewCategoryDocument');
         }
@@ -92,13 +93,18 @@ class DocumentsController extends AbstractController
         ]);
     }
 
-        /**
+    // Ajouter / Editer un document
+    /**
      * @Route("/documentAdd", name="documentAdd")
-     * * AJOUTER UN DOCUMENT
+     * @Route("/documentEdit/{id}", name="documentEdit")
      */
-    public function DocumentAdd(Request $request, EntityManagerInterface $manager): Response
+    public function DocumentAddEdit(Documents $DocumentNew = null, Request $request, EntityManagerInterface $manager): Response
     {
-        $DocumentNew = new Documents();
+        if(!$DocumentNew)
+        {
+            $DocumentNew = new Documents();
+        }
+
         $formDocumentAdd = $this->createForm(DocumentAddType::class, $DocumentNew);
         $formDocumentAdd->handleRequest($request);
 
@@ -116,12 +122,47 @@ class DocumentsController extends AbstractController
             $manager->persist($DocumentNew);
             $manager->flush();
 
-            return $this->redirectToRoute('documentAdd');
+            $this->addFlash('success', 'Le document a bien été ajouté !');
+
+            return $this->redirectToRoute('viewDocuments');
         }
 
         return $this->render('documents/documentAdd.html.twig', [
             'controller_name' => 'Ajouter un document',
-            'formDocumentAdd' => $formDocumentAdd->createView()
+            'formDocumentAdd' => $formDocumentAdd->createView(),
+            'editMode' => $DocumentNew->getId() !== null
+        ]);
+    }
+
+    // Suppression d'un document
+    /**
+     * @Route("/documentDelete/{id}", name="documentDelete")
+     */
+    public function documentDelete(Documents $DocumentDelete, EntityManagerInterface $manager): \Symfony\Component\HttpFoundation\RedirectResponse
+    {
+        $manager->remove($DocumentDelete);
+        $manager->flush();
+        $this->addFlash('success', "Le document a bien été supprimé !");
+        return $this->redirectToRoute('viewDocuments');
+    }
+
+    // Vue de tout les documents par utilisateur
+    /**
+     * @Route("/viewDocuments", name="viewDocuments")
+     */
+    public function viewDocuments(DocumentsRepository $repo): Response
+    {
+        // On appel getManager pour récupérer le noms des champs et des colonnes
+        $em = $this->getDoctrine()->getManager();
+        // récupération des champs
+        $colonnes = $em->getClassMetadata(Documents::class)->getFieldNames();
+        // dump($colonnes);
+        $documents = $repo->findAll();
+        // dump($categoryDocument);
+        return $this->render('documents/documents.html.twig', [
+            'Documents' => $documents,
+            'controller_name' => 'Vos documents',
+            'colonnes' => $colonnes
         ]);
     }
 

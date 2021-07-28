@@ -1,10 +1,22 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block title %}DOCUMENTS | Ajouter un document{% endblock %}
+{% block title %}
+    {% if editMode %}
+        DOCUMENTS | Modifier un document
+    {% else %}
+        DOCUMENTS | Ajouter un document
+    {% endif %}
+{% endblock %}
 
 {% block body %}
 
-    {# <h1>{{ controller_name }}</h1> #}
+    <h1 class="display-4 text-center my-4">
+        {% if editMode %}
+            Modifier votre document
+        {% else %}
+            Ajouter un document
+        {% endif %}
+    </h1>
 
     <div class="container">
         <div class="row">
@@ -15,9 +27,11 @@
 
             {# {{ form_row(formDocumentAdd.fileTitle) }} #}
 
-
-
-            <button type="submit" class="btn btn-warning mb-5">Ajouter un document</button>
+            {% if editMode %}
+                <input type="submit" class="button" value="Modifier votre document">
+            {% else %}
+                <input type="submit" class="button" value="Ajouter votre document">
+            {% endif %}
 
             {{ form_end(formDocumentAdd) }}
 

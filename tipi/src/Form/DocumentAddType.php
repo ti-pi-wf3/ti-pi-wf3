@@ -15,7 +15,7 @@ class DocumentAddType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
+//            ->add('date')
 //            ->add('fileTitle')
             ->add('titleDocument', TextType::class, [
                 'label' => 'Nom du document'
