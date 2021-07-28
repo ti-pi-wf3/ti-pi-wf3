@@ -121,7 +121,7 @@ class RegistrationController extends AbstractController
             
 
             $addMember->setTribeId($tribeName);
-            $addMember->setRoles(["ROLE_USER"]);
+            // $addMember->setRoles(["ROLE_USER"]);
 
             $manager->persist($addMember);
 

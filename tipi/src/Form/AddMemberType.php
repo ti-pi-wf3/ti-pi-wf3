@@ -29,6 +29,7 @@ class AddMemberType extends AbstractType
             ->add('email')
             ->add('birthDate')
             ->add('phone')
+            ->add('role')
             // ->add('indPhone')
             // ->add('tribeId')
         ;

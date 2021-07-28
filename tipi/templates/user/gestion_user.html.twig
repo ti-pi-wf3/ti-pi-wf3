@@ -1,0 +1,36 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}User Gestion{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1 class="mx-auto">Votre tribu</h1>
+
+<div class="row">
+        {% for oneTribe in usersBDD %}
+
+            {# {{ dump(oneCouncil) }} #}
+
+            <div class="col-md-4 text-center">
+                <div class="border rounded mb-4 col-md-7 p-4 d-flex flex-column">
+
+                    {# <h3 class="mb-0">{{ oneTribe.status }}</h3> #}
+                    <h3 class="mb-0">{{ oneTribe.firstName }}</h3>
+                    <h3 class="mb-0">{{ oneTribe.lastName }}</h3>
+
+                    
+                    
+                    
+
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+        
+
+    </div>
+
+    <div>
+    </div>
+{% endblock %}
