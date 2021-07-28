@@ -6,10 +6,10 @@ use App\Entity\Tribe;
 use App\Entity\ToDoList;
 use App\Entity\Documents;
 use App\Entity\Repertoire;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
@@ -121,11 +121,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $repertoires;
 
+        /**
+     * @ORM\OneToMany(targetEntity=Liste::class, mappedBy="user")
+     */
+    private $listes;
+
     public function __construct()
     {
 		$this->documents = new ArrayCollection();
         $this->toDoLists = new ArrayCollection();
         $this->repertoires = new ArrayCollection();
+        $this->listes = new ArrayCollection();
     }
 
     /**
@@ -392,4 +398,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+        /**
+     * @return Collection|Liste[]
+     */
+    public function getListes(): Collection
+    {
+        return $this->listes;
+    }
+
+    public function addListe(Liste $liste): self
+    {
+        if (!$this->listes->contains($liste)) {
+            $this->listes[] = $liste;
+            $liste->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListe(Liste $liste): self
+    {
+        if ($this->listes->removeElement($liste)) {
+            // set the owning side to null (unless already changed)
+            if ($liste->getUser() === $this) {
+                $liste->setUser(null);
+            }
+        }
+
+        return $this;
+    }
 }
