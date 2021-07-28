@@ -1,0 +1,60 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Repertoire{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center my-4">
+        {% if editContact %}  
+            Je modifie mon contact
+        {% else %}
+            J'ajoute un contact
+        {% endif %}
+        </h1>
+
+{{ form_start(formRepertoire) }}
+
+    {{ form_row(formRepertoire.firstName) }}
+
+    {{ form_row(formRepertoire.lastName) }}
+
+    {{ form_row(formRepertoire.adress) }}
+
+    {{ form_row(formRepertoire.country) }}
+
+    {{ form_row(formRepertoire.postalCode) }}
+
+    {{ form_row(formRepertoire.phoneHome) }}
+
+    {{ form_row(formRepertoire.indPhoneHome) }}
+
+    {{ form_row(formRepertoire.phone) }}
+
+    {{ form_row(formRepertoire.indPhone) }}
+
+    {{ form_row(formRepertoire.phonePro) }}
+
+    {{ form_row(formRepertoire.indPhonePro) }}
+
+    {{ form_row(formRepertoire.email) }}
+
+    {{ form_row(formRepertoire.emailPro) }}
+
+    {{ form_row(formRepertoire.pictureFile) }}
+
+    {# {{ form_row(formRepertoire.user) }} #}
+
+
+    <input type="submit" class="button"
+        {% if editContact %}  
+            value="Modifier"
+        {% else %}
+            value="Ajouter"
+        {% endif %}
+        >
+
+{{ form_end(formRepertoire) }}
+
+
+{% endblock %}
+
