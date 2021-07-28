@@ -90,17 +90,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $toDoLists;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Council::class, mappedBy="user")
-     */
-    private $councils;
-
-    public function __construct()
-    {
-        $this->toDoLists = new ArrayCollection();
-        $this->councils = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -316,36 +305,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($toDoList->getUser() === $this) {
                 $toDoList->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Council[]
-     */
-    public function getCouncils(): Collection
-    {
-        return $this->councils;
-    }
-
-    public function addCouncil(Council $council): self
-    {
-        if (!$this->councils->contains($council)) {
-            $this->councils[] = $council;
-            $council->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCouncil(Council $council): self
-    {
-        if ($this->councils->removeElement($council)) {
-            // set the owning side to null (unless already changed)
-            if ($council->getUser() === $this) {
-                $council->setUser(null);
             }
         }
 
