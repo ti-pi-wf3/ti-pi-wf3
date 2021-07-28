@@ -90,11 +90,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $councils;
 
-    public function __construct()
-    {
-        $this->councils = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -286,33 +281,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Council[]
-     */
-    public function getCouncils(): Collection
-    {
-        return $this->councils;
-    }
-
-    public function addCouncil(Council $council): self
-    {
-        if (!$this->councils->contains($council)) {
-            $this->councils[] = $council;
-            $council->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCouncil(Council $council): self
-    {
-        if ($this->councils->removeElement($council)) {
-            // set the owning side to null (unless already changed)
-            if ($council->getUser() === $this) {
-                $council->setUser(null);
-            }
-        }
-
-        return $this;
-    }
+    
 }
