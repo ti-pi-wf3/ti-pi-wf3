@@ -88,24 +88,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $indPhone;
 
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getTribeId(): ?Tribe
-    {
-        return $this->tribeId;
-    }
-
-    public function setTribeId(?Tribe $tribeId): self
-    {
-        $this->tribeId = $tribeId;
-
-        return $this;
-    }
-
         /**
      * @ORM\OneToMany(targetEntity=Documents::class, mappedBy="user")
      */
@@ -138,6 +120,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->repertoires = new ArrayCollection();
         $this->listes = new ArrayCollection();
         $this->councils = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getTribeId(): ?Tribe
+    {
+        return $this->tribeId;
+    }
+
+    public function setTribeId(?Tribe $tribeId): self
+    {
+        $this->tribeId = $tribeId;
+
+        return $this;
     }
 
     /**
