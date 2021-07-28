@@ -7,9 +7,7 @@
     <div class="text-center my-4">
         <h1>{{ controller_homeCouncilTitre }}</h1>
 
-        <button type="submit" class="btn btn-warning mb-5">
-        <a href="{{ path('addCouncil') }}">Créer une réunion !</a>
-        </button>
+        <a href="{{ path('addCouncil') }}"><input type="button" class="button" value="Créer une réunion !"></a>
         
         {# Affichage des messages utilisateur de validation de suppresion #}
         {% for message in app.flashes('success') %}
@@ -49,12 +47,12 @@
                     {# C'est une route paramétrée qui attend un ID d'un Council dans l'URL #}
                     {# en 2ème arguement de la fonction path(), nous fournissons l'id de l'Council à transmettre dans l'URL ({'id': oneCouncil.id}) #}
                     <div class="col-md-3 p-4 d-flex gap-2">
-                        <a href="{{ path('councilEdit', {'id': oneCouncil.id}) }}" class="btn btn-dark">
-                            <i class="bi bi-pencil-square"></i>
+                        <a class="iconLink" href="{{ path('councilEdit', {'id': oneCouncil.id}) }}">
+                            <i class="bi bi-pencil"></i>
                         </a>
 
                         {# SUPPRESSION REUNION #}
-                        <a href="{{ path('councilRemove', {'id': oneCouncil.id}) }}" class="btn btn-danger" onclick="return(confirm('Voulez-vous réellement supprimer cet article ?'));">
+                        <a class="iconLink" href="{{ path('councilRemove', {'id': oneCouncil.id}) }}" onclick="return(confirm('Voulez-vous réellement supprimer cet article ?'));">
                             <i class="bi bi-trash"></i>
                         </a>
                     </div>

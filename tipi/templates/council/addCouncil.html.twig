@@ -30,13 +30,13 @@
 
             {{ form_row(formAddCouncil.hourEnd) }}
 
-            <button type="submit" class="btn btn-primary mb-5">
+            <input type="submit" class="button" 
             {% if editCouncil %}
-                Enregistrer les modifications
+                value="Enregistrer les modifications"
             {% else %}
-                Enregistrer
+                value="Enregistrer"
             {% endif %}
-            </button>
+            >
 
         {{ form_end(formAddCouncil) }}
 

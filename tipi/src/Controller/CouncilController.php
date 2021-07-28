@@ -17,7 +17,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class CouncilController extends AbstractController
 {
     /**
-     * entrer sur la fonctionnalité réunion + affichage des Réunions existantes + posibilité de modifier/supprimer 1 réunion
+     * entrer sur la fonctionnalité réunion + affichage des Réunions existantes + posibilité de modifier et supprimer 1 réunion
      * 
      * @Route("/council", name="council")
      * @Route("/council/{id}/remove", name="councilRemove")
@@ -42,9 +42,9 @@ class CouncilController extends AbstractController
         dump($user->getId());
 
         // findAll(): SELECT * FROM Council + FETCHALL
-        // findBy() : permet d'appeller les reunions de l'utilisateur connecté
+        // findBy() : 1. array -> permet d'appeller les reunions de l'utilisateur connecté | 2. array -> permet d'afficher par ordre de date
         // $Councils : tableau ARRAY multidimentionnel contenant l'ensemble des Councils stockés ds la BDD
-        $councils = $repoCouncils->findBy(array("user" => $user)); 
+        $councils = $repoCouncils->findBy(array("user" => $user), array("dateStart" => "ASC")); 
         dump($councils); // dump(): outil de debug propre à Symfony, on affiche se que contient $Councils
         
 
@@ -68,7 +68,7 @@ class CouncilController extends AbstractController
 
         // ********* AFFICHE les REUNIONS s/ LE TEMPLATE ds ma page  ********* //
         return $this->render('council/council.html.twig', [
-            'controller_homeCouncilTitre' => 'Gérer vos réunions!',
+            'controller_homeCouncilTitre' => 'Gérer vos réunions !',
             'councilsBDD' => $councils, // via la méthode render() on transmet au template les Councils que nous avons selectionnés en BDD afin de les traités et de les afficher avec le langage TWIG
             'colonnes' => $colonnes,
             'councils' => $councils
@@ -104,7 +104,6 @@ class CouncilController extends AbstractController
             $user = $this->getUser();
 
             $addCouncil->setUser($user);
-
             dump($addCouncil);
 
             $manager->persist($addCouncil);

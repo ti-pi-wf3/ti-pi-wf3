@@ -25,15 +25,17 @@
 
             <h3 class="mb-0">{{ councilBDD.titleCouncilTribe }}</h3>
 
-            <div class="mb-1 text-muted">Réunion le : {{ councilBDD.dateStart|date('d/m/Y') }} à {{ councilBDD.hourStart|date('H:i:s') }}</div>
+            <div class="mb-1 text-muted">Réunion le : {{ councilBDD.dateStart|date('d/m/Y') }} à {{ councilBDD.hourStart|date('H:i') }}</div>
 
-            <div class="mb-1 text-muted">Fin le : {{ councilBDD.dateEnd|date('d/m/Y') }} à {{ councilBDD.hourEnd|date('H:i:s') }}</div>
+            <div class="mb-1 text-muted">Fin le : {{ councilBDD.dateEnd|date('d/m/Y') }} à {{ councilBDD.hourEnd|date('H:i') }}</div>
 
             <p class="card-text mb-auto">{{ councilBDD.comments}}</p>
 
             {# la fonction path() attend en argument le NOM de la route définit ds le fichier Controller.php ds l'annonce de la @Route("", name="NOM_ROUTE") #}
-            <a href="{{ path('council') }}">Retour aux réunions !</a>
-            <a href="{{ path('councilEdit', {"id": councilBDD.id}) }}">Modifier</a>
+            {# <a href="{{ path('council') }}">Retour aux réunions !</a> #}
+            {# <a href="{{ path('councilEdit', {"id": councilBDD.id}) }}">Modifier</a> #}
+            <a href="{{ path('council') }}"><input type="button" class="button" value="Retour aux réunions !"></a>
+            <a href="{{ path('councilEdit', {"id": councilBDD.id}) }}"><input type="button" class="buttonR" value="Modifier"></a>
 
             {# SUPPRESSION REUNION #}
             {# <a href="{{ path('admin_article_remove', {'id': oneArticle.id}) }}" class="btn btn-danger" onclick="return(confirm('Voulez-vous réellement supprimer cet article ?'));">
