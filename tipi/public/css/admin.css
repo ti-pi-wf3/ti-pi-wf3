@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
-body{
+/* body{
     font-family: 'Source Sans Pro';
     font-weight: 400;
-}
-
+} */
+/* BARRE MENU */
 .menu{
     font-weight: 600;
     font-size: 15px;
@@ -16,7 +16,7 @@ body{
 .menu:hover{
     color: #ffad00;
 }
-
+/* IMAGES */
 .dashboard{
     height: 300px;
     width: 1080px;
@@ -25,11 +25,25 @@ body{
     margin-top: 20px;
     margin-bottom: 50px;
 }
+.login{
+    
+    height: 300px;
+    width: 550px;
+    background-image: url(../assets/logintipi.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 
+}
+/* VALABLE POUR TOUT LES TITRES */
 .title{
     font-family: 'Fredoka One';
 }
 
+hr{
+    border-top:3px #7c4dff solid ;
+    
+}
+/* BUTTON de base*/
 .button{
     background-color: #7c4dff;
     border: none;
@@ -50,6 +64,7 @@ body{
     
 }
 
+/* BUTTON DECONNEXION*/
 .buttonR{
     background-color: white;
     border: solid #7c4dff 3px;
@@ -69,7 +84,7 @@ body{
     border-radius: 70px;
     font-size: 14px;
 }
- /* CSS MEMO */
+ /* PAGE MEMO */
 .task{
     background-color: white;
     color: #7c4dff;
@@ -94,6 +109,11 @@ body{
     background-position: center;
 }
 
+.plus:hover{
+    background-image: url(../assets/plushover.png);
+}
+
+    /* icone modif memo */
 .iconLink{
     color: #7c4dff;
 }
@@ -107,6 +127,8 @@ body{
     font-weight: bolder;
 }
 
+
+/* Page des WIDGETS*/
 .widgetV{
     height: 250px;
     width: 250px;
@@ -136,15 +158,7 @@ body{
 }
 
 
-.login{
-    
-    height: 300px;
-    width: 550px;
-    background-image: url(../assets/logintipi.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-
-}
+/*FOOTER  */
 
 footer{
     height: 100px;

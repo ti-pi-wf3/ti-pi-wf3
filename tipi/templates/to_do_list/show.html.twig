@@ -7,8 +7,8 @@
 {% block body %}
 {# <div class="container"> #}
 
-    <h4 class='title text-center'>Mémos</h4>
-    <div class="row mb-2 d-flex justify-content-start ">
+    <h4 class='title text-center mb-5'>Mémos</h4>
+    <div class="row mb-2 d-flex justify-content-center flex-wrap ">
 
         {% for oneToDoList in todolistsBDD %}
     
@@ -19,23 +19,23 @@
             <h5 class="title mt-2">{{oneToDoList.titleTask}}</h5>
             <small class="date">Crée le {{oneToDoList.date|date('d/m/Y')}} à {{oneToDoList.date|date('H:i')}}</small>
             <div class="d-flex flex-row ">
-                <a class="iconLink" href=""><i class="bi bi-trash"></i></a>
+                <a class="iconLink" href="{{ path('remove_to_do_list' , {'id' : oneToDoList.id}) }}"><i class="bi bi-trash"></i></a>
                 <a class="iconLink" href="{{ path('to_do_list_edit' , {'id' : oneToDoList.id}) }}"><i class="bi bi-pencil mx-2"></i></a>
             </div>
             <hr>
-            <p class="fs-5">{{oneToDoList.task}}<p>
+            <p class="fs-6">{{oneToDoList.task}}<p>
         
         </div>
 
-
-
-
         {% endfor %}
 
+<div class="col-2">
     <a class="mb-5" href="{{ path('to_do_list') }}">
         <div class="plus" >
         </div>
     </a>
+</div>
+<div class="col-10"></div>
 
     </div>
 {# </div> #}

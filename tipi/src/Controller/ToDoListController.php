@@ -51,7 +51,7 @@ class ToDoListController extends AbstractController
             $manager->persist($toDoList);
             $manager->flush();
 
-            $this->addFlash('success', "Le mémo a bien été modifié");
+            // $this->addFlash('success', "Le mémo a bien été modifié");
 
             return $this->redirectToRoute('show_to_do_list', [
                 'id'=> $toDoList->getId()
@@ -68,13 +68,22 @@ class ToDoListController extends AbstractController
 
     /**
      * @Route("/showtodolist", name="show_to_do_list")
-     * 
+     * @Route("/showtodolist/{id}/remove", name="remove_to_do_list")
      */
-    public function viewAll(ToDoListRepository $repoToDoLists, Request $request)
+    public function viewAll(ToDoListRepository $repoToDoLists, EntityManagerInterface $manager, ToDoList $memoRemove = null )
     {   
+        // dump($memoRemove);
+
         $user = $this->getUser();
 
-        $toDoLists = $repoToDoLists->findby(array('user'=>$user));
+        $toDoLists = $repoToDoLists->findby(array('user'=>$user), array("date" => "DESC"));
+
+        if($memoRemove)
+        {
+            $manager->remove($memoRemove);
+            $manager->flush();
+            return $this->redirectToRoute('show_to_do_list');
+        }
 
 
         return $this->render('to_do_list/show.html.twig', [
