@@ -300,6 +300,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+<<<<<<< HEAD
 	/**
      * @return Collection|Documents[]
      */
@@ -391,3 +392,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 }
+=======
+}
+>>>>>>> clax-repertoire

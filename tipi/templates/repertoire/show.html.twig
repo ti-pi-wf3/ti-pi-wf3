@@ -1,0 +1,62 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Répertoire{% endblock %}
+
+{% block body %}
+
+        <h1 class="fst-italic text-center my-5">Le répertoire de ma Tribu</h1>
+        <h5 class="display-4 text-center my-4">Liste de mes contacts: </h5>
+        
+        <a href="{{ path('repertoire') }}"><input type="button" class="buttonR" value="Ajouter un contact"></a>
+
+    {% for message in app.flashes('success') %}
+
+        <div class="alert alert-success" role="alert">
+        {{ message }}
+        </div>
+
+    {% endfor %}
+
+<table class="table table-striped mt-3 table-responsive">
+    <tr class="bg-dark text-center text-white">
+    {% for oneColonne in colonne %}
+
+    <th>{{ oneColonne|upper }}</th>
+
+    {% endfor %}
+
+        <th>MODIF.</th>
+        <th>SUPP.</th>
+    </tr>
+
+    {% for oneRepertoire in repertoiresBDD %}
+        <tr>
+            <td> {{ oneRepertoire.firstName }}</td>
+            <td> {{ oneRepertoire.lastName }}</td>
+            <td> {{ oneRepertoire.adress }}</td>
+            <td> {{ oneRepertoire.country }}</td>
+            <td> {{ oneRepertoire.postalCode }}</td>
+            <td> {{ oneRepertoire.phoneHome }}</td>
+            <td> {{ oneRepertoire.indPhoneHome }}</td>
+            <td> {{ oneRepertoire.phone }}</td>
+            <td> {{ oneRepertoire.indPhone }}</td>
+            <td> {{ oneRepertoire.phonePro }}</td>
+            <td> {{ oneRepertoire.indPhonePro }}</td>
+            <td> {{ oneRepertoire.email }}</td>
+            <td> {{ oneRepertoire.emailPro }}</td>
+            <td>
+                <img src="{{ asset('images/products/' ~ oneRepertoire.picture) }}" alt="" class="img-thumbnails img-backoffice">
+            </td>
+                
+            <td>
+                <a class="iconLink" href="{{ path('removeContact', {'id': oneRepertoire.id}) }}" 
+                    onclick="return(confirm('Voulez-vous réellement supprimer ce commentaire ?'));"><i class="bi bi-trash"></i></a>
+            </td>
+            <td>
+                <a class="iconLink" href="{{ path('editContact', {'id': oneRepertoire.id}) }}"><i class="bi bi-pencil mx-2"></i></a>
+            </td>
+        </tr>     
+    {% endfor %}
+
+</table>
+{% endblock %}
