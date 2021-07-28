@@ -91,14 +91,17 @@ class ListeController extends AbstractController
      * 
      */
 
-    public function viewAll(ArticleRepository $articleRepository, Request $request)
+    public function viewAll(CategoryArticleRepository $categoryArticleRepository, ArticleRepository $articleRepository, Request $request)
     {
-        $articles = $articleRepository->findAll();
-        
-        dump($articles);
+        $cat = $categoryArticleRepository->findAll();
+    
+        dump($cat);
+        dump($request);
+    
 
         return $this->render('liste/liste.html.twig', [
-            'articlesBDD' => $articles
+            'catBDD' => $cat,
+            // 'formList' => $formList->createView()
         ]);
     }
 }

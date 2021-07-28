@@ -6,39 +6,44 @@
 
     <div class="container">
 
-            {% if category is not defined %}
-
-                {% for oneArticle in articlesBDD %}
-        
-                <div class="col-2 mx-auto">
-                <h4>{{ oneArticle.categoryArticle }}</h4>
+            {# {% if articlesBDD.categoryArticle is not empty %} #}
 
 
-            {% endif %}
+    <form class="d-flex flex-wrap" method="POST">
+                {% for oneCat in catBDD %}
+                
+                <div class="col-3 mx-auto border">
+                    <h4>{{ oneCat.titleCategoryArticle }}</h4>
 
-                {% for titre in articlesBDD %}
+                        {% for oneArticle in oneCat.articles %}
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault" name="{{ oneCat.titleCategoryArticle }}" value="{{ oneArticle.titleArticle }}">
+                                <p>{{ oneArticle.titleArticle }}</p>
+                            </label>
+                        </div>
+{{dump(oneArticle.titleArticle) }}
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault" name="fruits" value="Pomme">
-                        <p>{{ oneArticle.titleArticle }}</p>
-                    </label>
+                        {% endfor %}
                 </div>
-
-                {% endfor %}
-            </div>
-        
+            
             {% endfor %}
-
-            <div>
-            <a href="{{ path('category') }}"><button class="btn btn-dark my-2">Ajouter Category</button></a>
-            </div>
-            <div>
-            <a href="{{ path('article') }}"><button class="btn btn-success"> Ajouter un Article</button></a>
-            </div>
-
-        </div>
+<button type="submit" class="btn btn-warning mb-5">Ajouter</button>
+</form>
+            {# {% endif %} #}
 
     </div>
+
+
+
+                    <div>
+                    <a href="{{ path('category') }}"><button class="btn btn-dark my-2">Ajouter Category</button></a>
+                </div>
+                <div>
+                    <a href="{{ path('article') }}"><button class="btn btn-success"> Ajouter un Article</button></a>
+                </div>
+
+    {# </div> #}
 
 {% endblock %}
