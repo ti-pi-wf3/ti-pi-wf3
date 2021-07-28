@@ -1,0 +1,56 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Répertoire{% endblock %}
+
+{% block body %}
+{# <div class="row"> #}
+
+    <h1 class="fst-italic text-center my-5">Le répertoire de ma Tribu</h1>
+        <h5 class="display-4 text-center my-4">Liste de mes contacts: </h5> 
+        
+        <a class="btn btn-warning mb-4" href="{{ path('repertoire') }}" role="button">J'ajoute un contact</a>
+
+    {% for message in app.flashes('success') %}
+
+        <div class="alert alert-success" role="alert">
+        {{ message }}
+        </div>
+
+    {% endfor %}
+
+    {% for oneRepertoire in repertoiresBDD %}
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative shadow-lg">
+                <div class="col-md-7 p-4 d-flex flex-column position-static">
+        
+    {# {{ dump(oneRepertoire) }} #}
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.firstName }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.lastName }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.adress }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.country }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.postalCode }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.phoneHome }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.indPhoneHome }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.phone }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.indPhone }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.phonePro }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.indPhonePro }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.email }}</p>
+                        <p class="display-6 text-center my-3">{{ oneRepertoire.emailPro }}</p>
+
+                        <a href="{{ path('editContact', {'id': oneRepertoire.id}) }}" class="btn btn-dark">
+                        <i class="bi bi-pencil-square"></i></a>
+
+                        <a href="{{ path('removeContact', {'id': oneRepertoire.id}) }}" class="btn btn-danger" onclick="return(confirm('Voulez-vous réellement supprimer ce commentaire ?'));">
+                        <i class="bi bi-trash"></i></a>
+
+
+                    {# <div class="col-md-5 d-none d-lg-block">
+                        <img src="{{ asset(oneRepertoire.picture) }}" alt="" class="col-md-12">
+                    </div> #}
+                </div>
+            </div>
+        </div> 
+    {% endfor %}
+{# </div> #}
+{% endblock %}
