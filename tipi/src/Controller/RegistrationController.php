@@ -95,13 +95,20 @@ class RegistrationController extends AbstractController
     // Creation d'un nouveau membre de la tribu
     /**
      * @Route("/addMember", name="addMember")
+     * @Route("/addMember/{id}/edit", name="addMember_edit")
      */
-    public function addMember(Request $request, EntityManagerInterface $manager,  SessionInterface $session, UserPasswordHasherInterface $encoder): Response
+    public function addMember(Request $request, EntityManagerInterface $manager, User $addMember = null, SessionInterface $session, UserPasswordHasherInterface $encoder): Response
     {
+        if(!$addMember)
+        {
+            $addMember = new User();
+        }
         $user = $this->getUser();
 
 
         $addMember = new User();
+        dump($user->getTribeId());
+        
         $formAddMember = $this->createForm(RegistrationType::class, $addMember);
 
         $formAddMember->handleRequest($request);
@@ -121,20 +128,20 @@ class RegistrationController extends AbstractController
             
 
             $addMember->setTribeId($tribeName);
-            $addMember->setRoles(["ROLE_USER"]);
+            // $addMember->setRoles(["ROLE_USER"]);
 
 
             $manager->persist($addMember);
 
             $manager->flush();
 
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('gestion');
         }
 
         return $this->render('registration/add_member.html.twig', [
             // 'superUser' => 'ROLE_SUPER_USER',
-            
-            'formAddMember' => $formAddMember->createView(),
+            'editMode' => $addMember->getTribeId(),
+            'formAddMember' => $formAddMember->createView()
         ]);
     }
 }

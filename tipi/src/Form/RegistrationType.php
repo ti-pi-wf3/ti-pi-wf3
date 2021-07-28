@@ -7,8 +7,11 @@ use App\Form\RegistrationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class RegistrationType extends AbstractType
 {
@@ -30,7 +33,10 @@ class RegistrationType extends AbstractType
             ->add('lastName')
             ->add('maidenName')
             ->add('email')
-            ->add('birthDate')
+            ->add('birthDate', DateType::class, [
+                //render it as a single text box
+                'widget' => 'single_text',
+            ])
             ->add('phone')
             // ->add('indPhone')
             //->add('tribeId')

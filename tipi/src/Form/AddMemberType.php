@@ -6,6 +6,9 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class AddMemberType extends AbstractType
 {
@@ -27,8 +30,23 @@ class AddMemberType extends AbstractType
             ->add('lastName')
             ->add('maidenName')
             ->add('email')
-            ->add('birthDate')
+            ->add('birthDate', DateType::class, [
+                //render it as a single text box
+                'widget' => 'single_text',
+            ])
             ->add('phone')
+            ->add('role', CollectionType::class, [
+                'label' => false,
+                'label_format' => false,
+                'entry_type' => ChoiceType::class, 
+                'entry_options' => [
+                    'choices' => [
+                        'Utilisateur' => 'ROLE_USER',
+                        'Administrateur' => 'ROLE_SUPER_USER'
+                    ]
+                ]
+            ])
+            ;
             // ->add('indPhone')
             // ->add('tribeId')
         ;
