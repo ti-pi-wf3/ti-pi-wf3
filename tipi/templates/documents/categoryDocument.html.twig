@@ -12,7 +12,11 @@
         </div>
     {% endfor %}
 
-    <div class="text-center pb-4"><a href="{{ path('categoryDocumentAdd') }}" class="text-dark">Ajouter une catégorie</a></div>
+    <div class="text-center pb-4">
+{#        <a href="{{ path('categoryDocumentAdd') }}" class="text-dark">Ajouter une catégorie</a>#}
+        <a href="{{ path('categoryDocumentAdd') }}"><input type="button" class="button" value="Ajouter une catégorie"></a>
+
+    </div>
 
 
     <table class="table table-bordered text-center">
@@ -32,9 +36,11 @@
             <tr>
                 <td>{{ data.titleCategoryDoc }}</td>
 
-                <td><a href="{{ path('categoryDocumentEdit', {'id': data.id }) }}" class="text-dark"><i class="bi bi-pencil"></i></a></td>
+{#                  <td><a href="{{ path('categoryDocumentEdit', {'id': data.id }) }}" class="text-dark"><i class="bi bi-pencil"></i></a></td>#}
+                    <td><a class="iconLink" href="{{ path('categoryDocumentEdit' , {'id' : data.id }) }}"><i class="bi bi-pencil mx-2"></i></a></td>
+{#                  <td><a href="{{ path('categoryDocumentDelete', {'id': data.id })}}" class="text-dark"><i class="bi bi-trash"></i></a></td>#}
+                    <td><a class="iconLink" href="{{ path('categoryDocumentDelete' , {'id' : data.id }) }}"><i class="bi bi-trash"></i></a></td>
 
-                <td><a href="{{ path('categoryDocumentDelete', {'id': data.id })}}" class="text-dark"><i class="bi bi-trash"></i></a></td>
             </tr>
         {% endfor %}
 

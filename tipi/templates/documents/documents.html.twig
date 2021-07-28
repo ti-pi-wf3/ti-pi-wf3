@@ -1,0 +1,51 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}DOCUMENTS | Vos documents{% endblock %}
+
+{% block body %}
+
+     <h1 class="text-center pb-4">{{ controller_name }}</h1>
+
+    {% for message in app.flashes("success") %}
+        <div class="col-md-4 mx-auto alert alert-primary text-center p-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="text-center pb-4">
+        <a href="{{ path('documentAdd') }}"><input type="button" class="button" value="Ajouter un document"></a>
+        <a href="{{ path('viewCategoryDocument') }}"><input type="button" class="button" value="Catégories"></a>
+    </div>
+
+
+    <table class="table table-bordered text-center">
+
+        <tr>
+{#            {% for data in colonnes %}#}
+{#                {% if data != 'id' %}#}
+{#                    #}{# <th>{{ data }}</th> #}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+            <th>DOCUMENT</th>
+            <th>CONTENU</th>
+            <th>CATEGORIE</th>
+            <th>DATE</th>
+            <th>Edit</th>
+            <th>Supp</th>
+        </tr>
+
+        {% for key, data in Documents %}
+            <tr>
+                <td>{{ data.titleDocument }}</td>
+                <td>{{ data.description}}</td>
+{#                TODO : faire appel à la table category#}
+                <td>/!\ faire appel à la table category /!\</td>
+                <td>{{data.date|date('d/m/Y')}}</td>
+                <td><a class="iconLink" href="{{ path('documentEdit' , {'id' : data.id }) }}"><i class="bi bi-pencil mx-2"></i></a></td>
+                <td><a class="iconLink" href="{{ path('documentDelete' , {'id' : data.id }) }}"><i class="bi bi-trash"></i></a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
