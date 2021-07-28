@@ -1,78 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}tipi | Se Connecter{% endblock %}
 
 {% block body %}
 
 {#  #}
         <!-- Custom styles for this template -->
     </head>
-    <body class="d-flex h-100 text-center text-white bg-dark">
+    <body class="h-100 text-center">
         
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="mb-auto">
-        <div>
-        <h3 class="float-md-start mb-0">Tipi</h3>
-        <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#">Features</a>
-            <a class="nav-link" href="#">Contact</a>
-        </nav>
+    <div class="container d-flex p-3 mx-auto flex-column align-items-center">
+    
+
+    
+        <h1 class="title mt-3">Bienvenue sur tipi.</h1>
+        <div class="login d-flex align-items-end justify-content-center mb-3">
+        
         </div>
-    </header>
+        <form method="post" class="col-5 text-center">
+        <h1 class="h3 mb-3 fw-bold title">Connexion</h1>
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
 
-    <main class="px-3 text-center">
-        <h1>Cover your page.</h1>
-        <p class="lead"></p>
-        <p class="lead">
-        <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
-        </p>
-{#  #}
+            {% if app.user %}
+                <div class="mb-3">
+                    Bonjour, {{ app.user.username }}, 
+                    <a class="title"href="{{ path('app_logout') }}">Se Déconnecter</a>
+                </div>
+            {% endif %}
 
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+            
+            <label for="inputEmail">Email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            <label for="inputPassword">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form-control mb-4" autocomplete="current-password" required>
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+            >
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control mb-4" autocomplete="current-password" required>
+            {#
+                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                See https://symfony.com/doc/current/security/remember_me.html
 
-    <input type="hidden" name="_csrf_token"
-        value="{{ csrf_token('authenticate') }}"
-    >
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+            #}
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Se connecter
-    </button>
-</form>
-
-{#  #}
-<hr>
-        <p class="">Vous n'avez pas encore de Tribu ?</p>
-        <a href="{{ path('tribe') }}"><button class="btn btn-lg btn-success" type="submit">Creer sa Tribu</button></a>
+            {# <button class="btn btn-lg btn-primary" type="submit">
+                Se connecter
+            </button> #}
+            <input type="submit" class="button" value="Se Connecter">
+        </form>
+        <hr>
+        <p>Vous n'avez pas encore de Tribu ?</p>
+        {# <a href="{{ path('tribe') }}"><button class="btn btn-lg btn-success" type="submit">Creer sa Tribu</button></a> #}
+        <a href="{{ path('tribe') }}"><input type="button" class="buttonR" value="Créer sa tribu"></a>
         
         
-<p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+        
+
     </main>
 {#  #}
 

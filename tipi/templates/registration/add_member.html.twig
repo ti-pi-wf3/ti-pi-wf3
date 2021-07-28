@@ -4,33 +4,54 @@
 
 {% block body %}
 
-<h1 class="text-center my-4">Ajouter un membre à la tribu</h1>
+<h2 class="text-center my-4 title">Ajouter un membre à la tribu</h2>
+
+<div class="col-4 mx-auto pt-5 mb-5 ">
 
 {{ form_start(formAddMember) }}
 
     {{ form_row(formAddMember.status) }}
 
-    {{ form_row(formAddMember.firstName) }}
+    {{ form_row(formAddMember.firstName, {
+        label: 'Prénom'
+    }) }}
 
-    {{ form_row(formAddMember.lastName) }}
+    {{ form_row(formAddMember.lastName, {
+        label: 'Nom'
+    }) }}
 
-    {{ form_row(formAddMember.maidenName) }}
+    {{ form_row(formAddMember.maidenName, {
+        label: 'Nom de jeune fille'
+    }) }}
 
-    {{ form_row(formAddMember.email) }}
+    {{ form_row(formAddMember.email, {
+        label: 'Email'
+    }) }}
 
-    {{ form_row(formAddMember.birthDate) }}
+    {{ form_row(formAddMember.birthDate, {
+        label: 'Date de naissance'
+    }) }}
 
     {{ form_row(formAddMember.sexe, {
         label: 'Sexe'
     }) }}
 
-    {{ form_row(formAddMember.phone) }}
+    {{ form_row(formAddMember.phone, {
+        label: 'Téléphone'
+    }) }}
 
-    {{ form_row(formAddMember.password) }}
+    {{ form_row(formAddMember.password, {
+        label: 'Mot de passe'
+    }) }}
 
-    <button type="submit" class="btn btn-warning mb-5">Ajouter</button>
+    
+    {# <button type="submit" class="btn btn-warning mb-5">Ajouter</button> #}
+    <input type="submit" class="button" value="Enregistrer">
+    
 
 {{ form_end(formAddMember) }}
+
+</div>
 
 
 {% endblock %}

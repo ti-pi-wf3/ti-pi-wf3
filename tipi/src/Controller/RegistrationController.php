@@ -99,7 +99,7 @@ class RegistrationController extends AbstractController
     public function addMember(Request $request, EntityManagerInterface $manager,  SessionInterface $session, UserPasswordHasherInterface $encoder): Response
     {
         $user = $this->getUser();
-        dump($user->getTribeId());
+
 
         $addMember = new User();
         $formAddMember = $this->createForm(RegistrationType::class, $addMember);
@@ -122,6 +122,7 @@ class RegistrationController extends AbstractController
 
             $addMember->setTribeId($tribeName);
             $addMember->setRoles(["ROLE_USER"]);
+
 
             $manager->persist($addMember);
 
