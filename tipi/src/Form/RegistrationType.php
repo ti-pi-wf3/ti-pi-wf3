@@ -7,8 +7,11 @@ use App\Form\RegistrationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class RegistrationType extends AbstractType
 {
@@ -16,7 +19,17 @@ class RegistrationType extends AbstractType
     {
         $builder
             //->add('role')
-            ->add('sexe')
+            ->add('sexe', CollectionType::class, [
+                'label' => false,
+                'label_format' => false,
+                'entry_type' => ChoiceType::class, 
+                'entry_options' => [
+                    'choices' => [
+                        'feminin' => 'f',
+                        'masculin' => 'm'
+                    ]
+                ]
+            ])
             ->add('password',RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',
@@ -30,7 +43,10 @@ class RegistrationType extends AbstractType
             ->add('lastName')
             ->add('maidenName')
             ->add('email')
-            ->add('birthDate')
+            ->add('birthDate', DateType::class, [
+                //render it as a single text box
+                'widget' => 'single_text',
+            ])
             ->add('phone')
             // ->add('indPhone')
             //->add('tribeId')

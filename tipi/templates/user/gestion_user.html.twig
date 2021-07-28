@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container">
-    <h1 class="mx-auto">Votre tribu</h1>
+    <h1 class=" text-center mx-auto">Votre tribu</h1>
 
 <div class="row">
         {% for oneTribe in usersBDD %}
@@ -14,20 +14,38 @@
             <div class="col-md-4 text-center">
                 <div class="border rounded mb-4 col-md-7 p-4 d-flex flex-column">
 
-                    {# <h3 class="mb-0">{{ oneTribe.status }}</h3> #}
-                    <h3 class="mb-0">{{ oneTribe.firstName }}</h3>
-                    <h3 class="mb-0">{{ oneTribe.lastName }}</h3>
+                    <h3 class="mb-0">{{ oneTribe.status }}</h3>
+                    <h3 class="mb-0">{{ oneTribe.firstName }}, {{ oneTribe.lastName }}</h3>
+
+                    {# {% if oneTribe.role[0] == 'ROLE_SUPER_USER' %}
+                    <h3 class="mb-0">Chef de Tribu</h3>
+                {% else %}
+                    <h3 class="mb-0">Membre de la Tribu</h3>
+                {% endif %} #}
+
+                    {# <h3 class="mb-0">
+                    {% for viewRole in role %} #}
+                    {# {% if viewRole.role == 1 %}
+                    Chef de Tribu
+                    {% else %}
+                    Membre de la Tribu
+                    {% endif %} #}
+                    {# {{ viewRole.role[1] }}
+                    {% endfor %} #}
+                    {# </h3> #}
 
                     
-                    
-                    
+                    <div class="d-flex flex-row ">
+                        <a class="iconLink" href="{{ path('gestion_remove' , {'id' : oneTribe.id}) }}"><i class="bi bi-trash"></i></a>
+                        <a class="iconLink" href="{{ path('addMember_edit' , {'id' : oneTribe.id}) }}"><i class="bi bi-pencil mx-2"></i></a>
+                    </div>
 
                 </div>
             </div>
 
         {% endfor %}
     </div>
-        
+        <a href="{{ path('addMember') }}">Ajouter un membre</a>
 
     </div>
 

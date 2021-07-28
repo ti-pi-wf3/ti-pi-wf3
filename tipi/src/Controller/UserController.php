@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Tribe;
 use App\Repository\UserRepository;
 use App\Repository\TribeRepository;
@@ -25,17 +26,33 @@ class UserController extends AbstractController
 
     /**
      * @Route("/gestion", name="gestion")
+     * @Route("/gestion/{id}/remove", name="gestion_remove")
      */
-    public function gestion(EntityManagerInterface $manager,UserRepository $userRepository, Tribe $tribe = null): Response
+    public function gestion(EntityManagerInterface $manager,UserRepository $userRepository, User $userRemove = null): Response
     {
+        //clé étrangère
         $userByTribu = $this->getUser();
-        dump($userByTribu->getId());
+
+        // dump($userByTribu->getId());
+
         $userByTribus = $userRepository->findBy(array("tribeId" => $userByTribu->getTribeId()));
-        dump($userByTribus);
+        $userRole = [];
+        $userRole = $userByTribu->getRoles();
+
+        dump($userRole);
+
+        //suppression
+        if($userRemove)
+        {
+            $manager->remove($userRemove);
+            $manager->flush();
+            return $this->redirectToRoute('gestion');
+        }
 
         return $this->render('user/gestion_user.html.twig', [
             'controller_name' => 'UserController',
-            'usersBDD' => $userByTribus
+            'usersBDD' => $userByTribus,
+            'role' => $userRole
         ]);
     }
 }
