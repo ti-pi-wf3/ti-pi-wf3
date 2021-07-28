@@ -157,6 +157,36 @@ hr{
     border: 3px solid #7c4dff;
 }
 
+/* USER */
+
+.accueil{
+    height: 300px;
+    width: 763px;
+    background-image: url(../assets/tipitribe.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cardUser{
+    height: 110px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: #ffad00;
+    ;
+}
+
+    /* icone modif user */
+    .iconLinkUser{
+        color: #7c4dff;
+    }
+    
+    .iconLinkUser:hover{
+        color: #ffffff;
+    }
+
+.titreUser{
+    color: #7c4dff;
+}
 
 /*FOOTER  */
 

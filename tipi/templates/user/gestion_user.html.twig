@@ -3,19 +3,25 @@
 {% block title %}User Gestion{% endblock %}
 
 {% block body %}
-    <div class="container">
-    <h1 class=" text-center mx-auto">Votre tribu</h1>
 
-<div class="row">
+    <h1 class=" text-center mx-auto title">Votre tribu</h1>
+
+    <div class="d-flex justify-content-center mb-2">
+    <div class="accueil mb-3">
+        
+    </div>
+    </div>
+<div class="row d-flex justify-content-center align-items-center">
         {% for oneTribe in usersBDD %}
 
             {# {{ dump(oneCouncil) }} #}
 
-            <div class="col-md-4 text-center">
-                <div class="border rounded mb-4 col-md-7 p-4 d-flex flex-column">
-
-                    <h3 class="mb-0">{{ oneTribe.status }}</h3>
-                    <h3 class="mb-0">{{ oneTribe.firstName }}, {{ oneTribe.lastName }}</h3>
+            <div class="cardUser d-flex flex-column justify-content-center align-items px-4 mx-2 mb-2">
+                
+                
+                    <h4 class="mb-0 titreUser">{{ oneTribe.firstName }}, {{ oneTribe.lastName }}</h4>
+                    <h5 class="mb-0 titreUser">{{ oneTribe.status }}</h5>
+                    
 
                     {# {% if oneTribe.role[0] == 'ROLE_SUPER_USER' %}
                     <h3 class="mb-0">Chef de Tribu</h3>
@@ -35,17 +41,18 @@
                     {# </h3> #}
 
                     
-                    <div class="d-flex flex-row ">
-                        <a class="iconLink" href="{{ path('gestion_remove' , {'id' : oneTribe.id}) }}"><i class="bi bi-trash"></i></a>
-                        <a class="iconLink" href="{{ path('addMember_edit' , {'id' : oneTribe.id}) }}"><i class="bi bi-pencil mx-2"></i></a>
+                    <div class="d-flex flex-row d-flex">
+                        <a class="iconLinkUser" href="{{ path('gestion_remove' , {'id' : oneTribe.id}) }}"><i class="bi bi-trash"></i></a>
+                        <a class="iconLinkUser" href="{{ path('addMember_edit' , {'id' : oneTribe.id}) }}"><i class="bi bi-pencil mx-2"></i></a>
                     </div>
 
-                </div>
+            
             </div>
 
         {% endfor %}
-    </div>
-        <a href="{{ path('addMember') }}">Ajouter un membre</a>
+        <div class="text-center my-5">
+        <a class="" href="{{ path('addMember') }}"><input type="button" class="button" value="Ajouter Membre"></a>  
+        </div>
 
     </div>
 
