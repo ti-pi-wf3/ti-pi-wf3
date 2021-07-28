@@ -106,7 +106,7 @@ class RegistrationController extends AbstractController
         $user = $this->getUser();
 
 
-        $addMember = new User();
+        
         dump($user->getTribeId());
         
         $formAddMember = $this->createForm(RegistrationType::class, $addMember);
