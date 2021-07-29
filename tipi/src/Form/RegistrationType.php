@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Form\RegistrationType;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
