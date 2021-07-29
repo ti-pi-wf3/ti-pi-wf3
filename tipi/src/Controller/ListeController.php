@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Liste;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Entity\CategoryArticle;
 use App\Form\CategoryArticleType;
+use App\Repository\ListeRepository;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CategoryArticleRepository;
@@ -103,5 +105,21 @@ class ListeController extends AbstractController
             'catBDD' => $cat,
             // 'formList' => $formList->createView()
         ]);
+    }
+
+    /**
+     * @Route("/liste", name="liste")
+     */
+
+    public function viewList(EntityManagerInterface $manager, Request $request, ListeRepository $repoListes):Response
+    {
+        
+
+                $liste = new Liste;
+
+            return $this->render('liste/index.html.twig', [
+                
+            ]);
+        
     }
 }

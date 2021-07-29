@@ -12,9 +12,10 @@
     </div>
     </div>
 <div class="row d-flex justify-content-center align-items-center">
+
         {% for oneTribe in usersBDD %}
 
-            {# {{ dump(oneCouncil) }} #}
+            {# {{ dump(oneTribe) }} #}
 
             <div class="cardUser d-flex flex-column justify-content-center align-items px-4 mx-2 mb-2">
                 
@@ -29,16 +30,17 @@
                     <h3 class="mb-0">Membre de la Tribu</h3>
                 {% endif %} #}
 
-                    {# <h3 class="mb-0">
-                    {% for viewRole in role %} #}
-                    {# {% if viewRole.role == 1 %}
-                    Chef de Tribu
-                    {% else %}
-                    Membre de la Tribu
-                    {% endif %} #}
-                    {# {{ viewRole.role[1] }}
-                    {% endfor %} #}
-                    {# </h3> #}
+                    <h5 class="mb-0">
+                    {# {% for viewRole in role %} #}
+
+                    {% if oneTribe.roles[0] == 'ROLE_SUPER_USER' %}
+                        <p class="mb-0">Chef de Tribu</p>
+                    {% else  %}
+                        <p class="mb-0">Membre de la Tribu</p>
+                    {% endif %}
+                    
+                    {# {% endfor %} #}
+                    </h5>
 
                     
                     <div class="d-flex flex-row d-flex">
@@ -58,4 +60,5 @@
 
     <div>
     </div>
+
 {% endblock %}
