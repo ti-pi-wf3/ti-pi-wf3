@@ -64,6 +64,7 @@ class DocumentsController extends AbstractController
     }
 
     // Suppression d'une catégorie pour les documents
+    //!!!!!!!!!!!!!!!! PREVENIR MSG D'ERREUR SI CAT utilisée par un DOC !!!!!!!!!!!!!
     /**
      * @Route("/categoryDocumentDelete/{id}", name="categoryDocumentDelete")
      */
@@ -75,11 +76,13 @@ class DocumentsController extends AbstractController
          return $this->redirectToRoute('viewCategoryDocument');
      }
 
+     // Vue des catégories par tribu
     /**
      * @Route("/viewCategoryDocument", name="viewCategoryDocument")
      */
     public function viewCategoryDocument(CategoryDocumentRepository $repo): Response
     {
+        $user =
 
 //        // On appel getManager pour récupérer le noms des champs et des colonnes
 //        $em = $this->getDoctrine()->getManager();
@@ -88,6 +91,7 @@ class DocumentsController extends AbstractController
 //        // dump($colonnes);
 
 //        $categoryDocument = $repo->findBy(array("user" => $user));
+
         $categoryDocument = $repo->findAll();
         // dump($categoryDocument);
         return $this->render('documents/categoryDocument.html.twig', [
@@ -151,7 +155,7 @@ class DocumentsController extends AbstractController
 
             $this->addFlash('success', 'Le document a bien été ajouté !');
 
-            return $this->redirectToRoute('viewDocuments', [
+            return $this->redirectToRoute('oneViewDocument', [
                 "id" => $DocumentNew->getId()
             ]);
         }
