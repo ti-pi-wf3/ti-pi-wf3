@@ -85,7 +85,7 @@ class DocumentsController extends AbstractController
     public function viewCategoryDocument(CategoryDocumentRepository $repo): Response
     {
 
-//        // On appel getManager pour récupérer le noms des champs et des colonnes
+//        // On appelle getManager pour récupérer le noms des champs et des colonnes
 //        $em = $this->getDoctrine()->getManager();
 //        // récupération des champs
 //        $colonnes = $em->getClassMetadata(CategoryDocument::class)->getFieldNames();
