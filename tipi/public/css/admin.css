@@ -96,7 +96,12 @@ hr{
     border-radius: 10px;
     height: 250px;
     width: 250px;
-    overflow-y: auto;
+    overflow-y: scroll;
+}
+
+.task::-webkit-scrollbar{
+display:none;
+
 }
 
 .task:hover{
