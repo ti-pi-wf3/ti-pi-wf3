@@ -12,7 +12,7 @@
 
 {% block body %}
 
-    <h1 class="display-4 text-center my-4">
+    <h1 class="display-4 text-center my-4 title">
         {% if editMode %}
             Modifier la catégorie pour vos documents
         {% else %}
@@ -36,8 +36,10 @@
 {#            <button type="submit" class="btn btn-warning mb-5">Valider l'ajout d'une catégorie pour vos documents</button>#}
             {% if editMode %}
                 <input type="submit" class="button" value="Valider">
+                <a href="{{ path('viewCategoryDocument') }}"><input type="button" class="buttonR" value="Annuler"></a>
             {% else %}
                 <input type="submit" class="button" value="Ajouter">
+                <a href="{{ path('viewCategoryDocument') }}"><input type="button" class="buttonR" value="Annuler"></a>
             {% endif %}
 
             {{ form_end(formCategoryDocumentAdd) }}

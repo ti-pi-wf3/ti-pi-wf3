@@ -10,7 +10,7 @@
 
 {% block body %}
 
-    <h1 class="display-4 text-center my-4">
+    <h1 class="display-4 text-center my-4 title">
         {% if editMode %}
             Modifier votre document
         {% else %}
@@ -20,8 +20,6 @@
 
     <div class="container">
         <div class="row">
-
-            <h1 class="text-center my-4">Ajouter un document </h1>
 
             {{ form_start(formDocumentAdd) }}
 
@@ -48,8 +46,10 @@
 
             {% if editMode %}
                 <input type="submit" class="button" value="Modifier votre document">
+                <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="Annuler"></a>
             {% else %}
                 <input type="submit" class="button" value="Ajouter votre document">
+                <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="Annuler"></a>
             {% endif %}
 
             {{ form_end(formDocumentAdd) }}

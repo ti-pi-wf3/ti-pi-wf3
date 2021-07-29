@@ -77,26 +77,22 @@ class DocumentsController extends AbstractController
 
     /**
      * @Route("/viewCategoryDocument", name="viewCategoryDocument")
-     * * VUE ALL CATEGORY
      */
     public function viewCategoryDocument(CategoryDocumentRepository $repo): Response
     {
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // ATTENTION TOUTES LES CATEGORIES SONT AFFICHER, VOIR POUR FAIRE UN GET USER POUR FINDBY
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-        // On appel getManager pour récupérer le noms des champs et des colonnes
-        $em = $this->getDoctrine()->getManager();
-        // récupération des champs
-        $colonnes = $em->getClassMetadata(CategoryDocument::class)->getFieldNames();
-        // dump($colonnes);
+//        // On appel getManager pour récupérer le noms des champs et des colonnes
+//        $em = $this->getDoctrine()->getManager();
+//        // récupération des champs
+//        $colonnes = $em->getClassMetadata(CategoryDocument::class)->getFieldNames();
+//        // dump($colonnes);
 
 //        $categoryDocument = $repo->findBy(array("user" => $user));
         $categoryDocument = $repo->findAll();
         // dump($categoryDocument);
         return $this->render('documents/categoryDocument.html.twig', [
             'categoryDocument' => $categoryDocument,
-            'colonnes' => $colonnes
+//            'colonnes' => $colonnes
         ]);
     }
 
@@ -224,7 +220,7 @@ class DocumentsController extends AbstractController
         return $this->render('documents/documents.html.twig', [
             'Documents' => $documents,
             'controller_name' => 'Vos documents',
-            'colonnes' => $colonnes
+//            'colonnes' => $colonnes
         ]);
     }
 
@@ -232,13 +228,12 @@ class DocumentsController extends AbstractController
     /**
      * @Route("/oneViewDocument/{id}", name="oneViewDocument")
      */
-    public function oneViewDocument(Documents $documents, CategoryDocument $categoryDocument, Request $request): Response
+    public function oneViewDocument(Documents $documents, Request $request): Response
     {
-        dump($request->server->get('DOCUMENT_ROOT'));
+        // TODO AFFICHER LES DOCUMENTS UPLOAD
 
         return $this->render('documents/DocumentView.html.twig', [
             'documents' => $documents,
-            'categoryDocument' => $categoryDocument,
             'controller_name' => 'Votre document'
         ]);
     }
