@@ -30,10 +30,10 @@ class CategoryDocument
     private $documents;
 
     /**
-     * @ORM\ManyToOne(targetEntity=tribe::class, inversedBy="categoryDocuments")
+     * @ORM\ManyToOne(targetEntity=Tribe::class, inversedBy="categoryDocumentsTribe")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $tribe;
+    private $tribeCategoryDoc;
 
     public function __construct()
     {
@@ -87,14 +87,14 @@ class CategoryDocument
         return $this;
     }
 
-    public function getTribe(): ?tribe
+    public function getTribeCategoryDoc(): ?tribe
     {
-        return $this->tribe;
+        return $this->tribeCategoryDoc;
     }
 
-    public function setTribe(?tribe $tribe): self
+    public function setTribeCategoryDoc(?tribe $tribeCategoryDoc): self
     {
-        $this->tribe = $tribe;
+        $this->tribeCategoryDoc = $tribeCategoryDoc;
 
         return $this;
     }

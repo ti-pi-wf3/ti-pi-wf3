@@ -31,14 +31,14 @@ class Tribe
     private $users;
 
     /**
-     * @ORM\OneToMany(targetEntity=CategoryDocument::class, mappedBy="tribe")
+     * @ORM\OneToMany(targetEntity=CategoryDocument::class, mappedBy="tribeCategoryDoc")
      */
-    private $categoryDocuments;
+    private $categoryDocumentsTribe;
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
-        $this->categoryDocuments = new ArrayCollection();
+        $this->categoryDocumentsTribe = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -91,27 +91,27 @@ class Tribe
     /**
      * @return Collection|CategoryDocument[]
      */
-    public function getCategoryDocuments(): Collection
+    public function getCategoryDocumentsTribe(): Collection
     {
-        return $this->categoryDocuments;
+        return $this->categoryDocumentsTribe;
     }
 
-    public function addCategoryDocument(CategoryDocument $categoryDocument): self
+    public function addCategoryDocumentsTribe(CategoryDocument $categoryDocumentsTribe): self
     {
-        if (!$this->categoryDocuments->contains($categoryDocument)) {
-            $this->categoryDocuments[] = $categoryDocument;
-            $categoryDocument->setTribe($this);
+        if (!$this->categoryDocumentsTribe->contains($categoryDocumentsTribe)) {
+            $this->categoryDocumentsTribe[] = $categoryDocumentsTribe;
+            $categoryDocumentsTribe->setTribeCategoryDoc($this);
         }
 
         return $this;
     }
 
-    public function removeCategoryDocument(CategoryDocument $categoryDocument): self
+    public function removeCategoryDocumentsTribe(CategoryDocument $categoryDocumentsTribe): self
     {
-        if ($this->categoryDocuments->removeElement($categoryDocument)) {
+        if ($this->categoryDocumentsTribe->removeElement($categoryDocumentsTribe)) {
             // set the owning side to null (unless already changed)
-            if ($categoryDocument->getTribe() === $this) {
-                $categoryDocument->setTribe(null);
+            if ($categoryDocumentsTribe->getTribeCategoryDoc() === $this) {
+                $categoryDocumentsTribe->setTribeCategoryDoc(null);
             }
         }
 

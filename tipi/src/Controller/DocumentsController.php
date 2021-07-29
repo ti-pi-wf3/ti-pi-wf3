@@ -237,6 +237,8 @@ class DocumentsController extends AbstractController
     public function oneViewDocument(Documents $documents): Response
     {
         // TODO AFFICHER LES DOCUMENTS UPLOAD
+        dump($documents);
+        // afficher les doc upload
 
         return $this->render('documents/DocumentView.html.twig', [
             'documents' => $documents,
