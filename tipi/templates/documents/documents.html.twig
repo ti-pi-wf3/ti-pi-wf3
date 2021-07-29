@@ -26,6 +26,7 @@
 {#                    #}{# <th>{{ data }}</th> #}
 {#                {% endif %}#}
 {#            {% endfor %}#}
+            <th>VIEW</th>
             <th>DOCUMENT</th>
             <th>CONTENU</th>
             <th>CATEGORIE</th>
@@ -36,10 +37,10 @@
 
         {% for key, data in Documents %}
             <tr>
+                <td><a class="iconLink" href=""><i class="bi bi-eye mx-2"></i></a></td>
                 <td>{{ data.titleDocument }}</td>
                 <td>{{ data.description}}</td>
-{#                TODO : faire appel à la table category#}
-                <td>/!\ faire appel à la table category /!\</td>
+                <td>{{ data.categoryDocument.titleCategoryDoc }}</td>
                 <td>{{data.date|date('d/m/Y')}}</td>
                 <td><a class="iconLink" href="{{ path('documentEdit' , {'id' : data.id }) }}"><i class="bi bi-pencil mx-2"></i></a></td>
                 <td><a class="iconLink" href="{{ path('documentDelete' , {'id' : data.id }) }}"><i class="bi bi-trash"></i></a></td>

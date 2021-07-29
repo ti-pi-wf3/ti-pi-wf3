@@ -80,11 +80,17 @@ class DocumentsController extends AbstractController
      */
     public function viewCategoryDocument(CategoryDocumentRepository $repo): Response
     {
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // ATTENTION TOUTES LES CATEGORIES SONT AFFICHER, VOIR POUR FAIRE UN GET USER POUR FINDBY
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         // On appel getManager pour récupérer le noms des champs et des colonnes
         $em = $this->getDoctrine()->getManager();
         // récupération des champs
         $colonnes = $em->getClassMetadata(CategoryDocument::class)->getFieldNames();
         // dump($colonnes);
+
+//        $categoryDocument = $repo->findBy(array("user" => $user));
         $categoryDocument = $repo->findAll();
         // dump($categoryDocument);
         return $this->render('documents/categoryDocument.html.twig', [
@@ -98,7 +104,7 @@ class DocumentsController extends AbstractController
      * @Route("/documentAdd", name="documentAdd")
      * @Route("/documentEdit/{id}", name="documentEdit")
      */
-    public function DocumentAddEdit(Documents $DocumentNew = null, Request $request, EntityManagerInterface $manager): Response
+    public function DocumentAddEdit(Documents $DocumentNew = null,Request $request, EntityManagerInterface $manager): Response
     {
         if(!$DocumentNew)
         {
@@ -124,13 +130,16 @@ class DocumentsController extends AbstractController
 
             $this->addFlash('success', 'Le document a bien été ajouté !');
 
-            return $this->redirectToRoute('viewDocuments');
+            return $this->redirectToRoute('oneViewDocument', [
+                "id" => $DocumentNew->getId()
+            ]);
         }
 
         return $this->render('documents/documentAdd.html.twig', [
             'controller_name' => 'Ajouter un document',
             'formDocumentAdd' => $formDocumentAdd->createView(),
-            'editMode' => $DocumentNew->getId() !== null
+            'editMode' => $DocumentNew->getId()
+//            'editMode' => $DocumentNew->getId() !== null
         ]);
     }
 
@@ -152,17 +161,36 @@ class DocumentsController extends AbstractController
      */
     public function viewDocuments(DocumentsRepository $repo): Response
     {
+        $user = $this->getUser();
+        // https://symfony.com/doc/current/doctrine/associations.html
+
         // On appel getManager pour récupérer le noms des champs et des colonnes
         $em = $this->getDoctrine()->getManager();
         // récupération des champs
         $colonnes = $em->getClassMetadata(Documents::class)->getFieldNames();
         // dump($colonnes);
-        $documents = $repo->findAll();
-        // dump($categoryDocument);
+
+        $documents = $repo->findBy(array("user" => $user));
         return $this->render('documents/documents.html.twig', [
             'Documents' => $documents,
             'controller_name' => 'Vos documents',
             'colonnes' => $colonnes
+        ]);
+    }
+
+    // Vue entière d'un document
+    /**
+     * @Route("/oneViewDocument/{id}", name="oneViewDocument")
+     */
+    public function oneViewDocument(Documents $documents, CategoryDocument $categoryDocument, Request $request): Response
+    {
+
+        dump($request->server->get('DOCUMENT_ROOT'));
+
+        return $this->render('documents/documentView.html.twig', [
+            'documents' => $documents,
+            'categoryDocument' => $categoryDocument,
+            'controller_name' => 'Votre document'
         ]);
     }
 
