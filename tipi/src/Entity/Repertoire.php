@@ -67,7 +67,7 @@ class Repertoire
     private $phone;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $indPhone;
 
@@ -234,12 +234,12 @@ class Repertoire
         return $this;
     }
 
-    public function getIndPhone(): ?int
+    public function getIndPhone(): ?string
     {
         return $this->indPhone;
     }
 
-    public function setIndPhone(?int $indPhone): self
+    public function setIndPhone(?string $indPhone): self
     {
         $this->indPhone = $indPhone;
 

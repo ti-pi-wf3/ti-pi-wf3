@@ -19,9 +19,12 @@
 
 <table class="table table-striped mt-3 table-responsive">
     <tr class="bg-dark text-center text-white">
+    
     {% for oneColonne in colonne %}
 
-    <th>{{ oneColonne|upper }}</th>
+    {% if oneColonne != 'id' and oneColonne != 'updated_at' and oneColonne != 'ind_phone_home' and oneColonne != 'ind_phone' and oneColonne != 'ind_phone_pro' %}
+        <th>{{ oneColonne|upper }}</th>
+    {% endif %}
 
     {% endfor %}
 
@@ -36,12 +39,9 @@
             <td> {{ oneRepertoire.adress }}</td>
             <td> {{ oneRepertoire.country }}</td>
             <td> {{ oneRepertoire.postalCode }}</td>
-            <td> {{ oneRepertoire.phoneHome }}</td>
-            <td> {{ oneRepertoire.indPhoneHome }}</td>
-            <td> {{ oneRepertoire.phone }}</td>
-            <td> {{ oneRepertoire.indPhone }}</td>
-            <td> {{ oneRepertoire.phonePro }}</td>
-            <td> {{ oneRepertoire.indPhonePro }}</td>
+            <td> {{ oneRepertoire.indPhoneHome }}{{ oneRepertoire.phoneHome }}</td>
+            <td> {{ oneRepertoire.indPhone }}{{ oneRepertoire.phone }}</td>
+            <td> {{ oneRepertoire.indPhonePro }}{{ oneRepertoire.phonePro }}</td>
             <td> {{ oneRepertoire.email }}</td>
             <td> {{ oneRepertoire.emailPro }}</td>
             <td>
