@@ -93,13 +93,47 @@ class ListeController extends AbstractController
      * 
      */
 
-    public function viewAll(CategoryArticleRepository $categoryArticleRepository, ArticleRepository $articleRepository, Request $request)
+    public function viewAll(CategoryArticleRepository $categoryArticleRepository, ArticleRepository $articleRepository, Request $request, EntityManagerInterface $manager)
     {
         $cat = $categoryArticleRepository->findAll();
     
-        dump($cat);
-        dump($request);
-    
+        // dump($cat);
+
+        if($request->request->count() > 0)
+        {
+            $post = $request->request;
+            dump($post);
+
+            foreach($post as $key => $tab)
+            {
+                if($key != 'title_list')
+                {
+                     // dump($tab);
+                    foreach($tab as $key2 => $value)
+                    {
+                        $liste = new Liste;
+
+                        $liste->setUser($this->getUser())
+                            ->setTitleList($post->get('title_list')[0])
+                            ->setDate(new \DateTime)
+                            ->setArticle($value)
+                            ->setQuantity(1)
+                            ->setValid(1)
+                            ->setTitleCategoryArticle($key);
+
+                        dump($liste);
+
+                        $manager->persist($liste);
+                    }
+                }
+            }
+
+            $manager->flush();
+
+            return $this->redirectToRoute('index');
+            
+
+        }
 
         return $this->render('liste/liste.html.twig', [
             'catBDD' => $cat,
@@ -115,10 +149,12 @@ class ListeController extends AbstractController
     {
         
 
-                $liste = new Liste;
+        $liste = $repoListes->findBy([
+            'date' => $request->query->get('date')
+        ]);
 
             return $this->render('liste/index.html.twig', [
-                
+                'listesBDD' => $liste
             ]);
         
     }
