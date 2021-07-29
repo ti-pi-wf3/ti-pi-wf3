@@ -25,8 +25,9 @@
                         <img src="assets\logosmall.png" alt="Tipi logo">
                     </div> 
                     <div class="col-2"></div>
-                    <div class="col-5 d-flex justify-content-end">
-                        <input type="button" href="#" class="button me-2" value="Mon Compte">
+                    <div class="col-5 d-flex justify-content-end align-items-end">
+                        <p class="title">Hello, <span class="colorName">{{ app.user.firstName }}&nbsp;&nbsp;{{ app.user.lastName }}</span> !&nbsp;&nbsp;</p>
+                        {# <input type="button" href="#" class="button me-2" value="Mon Compte"> #}
                         <a href="{{ path('app_logout') }}"><input type="button" class="buttonR" value="Se Déconnecter"></a>
                     
                 </div>

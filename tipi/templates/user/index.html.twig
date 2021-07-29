@@ -43,11 +43,13 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo </p>
             <h1 ><i class="bi bi-people"></i></h1>
         </a>
+        {% if is_granted('ROLE_SUPER_USER') %}
         <a href="{{ path('gestion') }}" class="col-4 mb-3 me-3 btn widgetO">
             <h5 class="mt-3 fw-bold">Gérer sa tribu</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo </p>
             <h1 ><i class="bi bi-sliders"></i></h1>
         </a>
+        {% endif %}
     </div>
     
 

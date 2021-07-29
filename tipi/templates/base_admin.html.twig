@@ -34,8 +34,9 @@
                         <a href="{{ path('show_to_do_list') }}" class="menu">Mémos</a>
 
                         <a href="{{ path('council') }}" class="menu">Réunion</a>
-
+                        {% if is_granted('ROLE_SUPER_USER') %}
                         <a href="{{ path('gestion') }}" class="menu">Gérer ma tribu</a>
+                        {% endif %}
                     </div>
                 </div>
             </header>

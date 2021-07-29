@@ -41,8 +41,8 @@ class AddMemberType extends AbstractType
                 'entry_type' => ChoiceType::class, 
                 'entry_options' => [
                     'choices' => [
-                        'Utilisateur' => 'ROLE_USER',
-                        'Administrateur' => 'ROLE_SUPER_USER'
+                        'Membre' => '',
+                        'Chef' => 'ROLE_SUPER_USER'
                     ]
                 ]
             ])

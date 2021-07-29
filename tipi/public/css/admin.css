@@ -16,6 +16,10 @@
 .menu:hover{
     color: #ffad00;
 }
+
+.colorName{
+    color: #ffad00;
+}
 /* IMAGES */
 .dashboard{
     height: 300px;
