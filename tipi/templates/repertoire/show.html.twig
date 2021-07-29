@@ -7,8 +7,9 @@
         <h1 class="title text-center">Le répertoire de ma Tribu</h1>
         <h5 class="title text-center">Liste de mes contacts: </h5>
         
+        <div class="text-center my-4">
         <a href="{{ path('repertoire') }}"><input type="button" class="button" value="Ajouter un contact"></a>
-
+        </div>
     {% for message in app.flashes('success') %}
 
         <div class="d-flex justify-content-center">

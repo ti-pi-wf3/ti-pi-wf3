@@ -117,6 +117,11 @@ class RegistrationController extends AbstractController
 
         if($formAddMember->isSubmitted() && $formAddMember->isValid())
         {
+            if(!$addMember->getId())
+                $word = 'ajouté';
+            else
+                $word = 'modifié';
+
             $hash = $encoder->hashPassword($addMember, $addMember->getPassword());
             dump($hash);
             $addMember->setPassword($hash);
@@ -134,6 +139,8 @@ class RegistrationController extends AbstractController
             $manager->persist($addMember);
 
             $manager->flush();
+
+            $this->addFlash('success', "Le membre a été $word avec succès !");
 
             return $this->redirectToRoute('gestion');
         }

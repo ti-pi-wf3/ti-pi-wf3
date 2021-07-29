@@ -197,3 +197,7 @@ hr{
 footer{
     height: 100px;
 }
+
+th, td {
+    vertical-align: middle !important;
+}

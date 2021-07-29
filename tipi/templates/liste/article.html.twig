@@ -1,32 +1,35 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block title %}Hello ArticleController!{% endblock %}
 
 {% block body %}
 
-<div class="container">
-<div class="row">
 
-<h1 class="text-center my-4">Ajouter un Article </h1>
+
+<h1 class="text-center my-4 title">Ajouter un article </h1>
 
 {{ form_start(formArticle) }}
 
-    {{ form_row(formArticle.categoryArticle) }}
+    {{ form_row(formArticle.categoryArticle, 
+    {label: 'Titre de catégorie'}
+    ) }}
 
-    {{ form_row(formArticle.titleArticle) }}
+    {{ form_row(formArticle.titleArticle, 
+    {label: 'Article à ajouter'}
+    ) }}
 
-    <button type="submit" class="btn btn-warning mb-5">Ajouter</button>
+                    <div class="my-4 text-center">
+                        <input type="button" class="button" value="Ajouter">
+                    </div>
 
 {{ form_end(formArticle) }}
 
 
-        <div>
-        <a href="{{ path('viewArticle') }}"><button class="btn btn-warning">Retour</button></a>
+        <div class="my-4 text-center">
+<a href="{{ path('viewArticle') }}"><input type="button" class="button" value="Retour"></a>
         </div>
 
 
-</div>
-</div>
 
 
 

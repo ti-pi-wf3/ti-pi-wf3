@@ -46,6 +46,8 @@ class UserController extends AbstractController
         {
             $manager->remove($userRemove);
             $manager->flush();
+            $this->addFlash('success', "Le membre a bien été supprimé !");
+
             return $this->redirectToRoute('gestion');
         }
 
