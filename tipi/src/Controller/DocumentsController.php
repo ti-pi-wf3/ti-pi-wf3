@@ -48,6 +48,9 @@ class DocumentsController extends AbstractController
 
         if($formCategoryDocumentAdd->isSubmitted() && $formCategoryDocumentAdd->isValid())
         {
+            $user = $this->getUser();
+            $tribeId = $user->getTribeId(); // ENTITY Tribe
+            $CategoryDocumentNew->setTribeCategoryDoc($tribeId);
 
             $manager->persist($CategoryDocumentNew);
             $manager->flush();
@@ -93,7 +96,10 @@ class DocumentsController extends AbstractController
 
 //        $categoryDocument = $repo->findBy(array("user" => $user));
 
-        $categoryDocument = $repo->findAll();
+
+        $catByTribu = $this->getUser();
+        $categoryDocument = $repo->findBy(array("tribeCategoryDoc" => $catByTribu->getTribeId()));
+
         // dump($categoryDocument);
         return $this->render('documents/categoryDocument.html.twig', [
             'categoryDocument' => $categoryDocument,
@@ -173,7 +179,8 @@ class DocumentsController extends AbstractController
     /**
      * @Route("/supprime/image/{id}", name="annonces_delete_image", methods={"DELETE"})
      */
-    public function deleteImage(Files $file, Request $request){
+    public function deleteImage(Files $file, Request $request): JsonResponse
+    {
         $data = json_decode($request->getContent(), true);
 
         // On vérifie si le token est valide
@@ -236,9 +243,10 @@ class DocumentsController extends AbstractController
      */
     public function oneViewDocument(Documents $documents): Response
     {
-        // TODO AFFICHER LES DOCUMENTS UPLOAD
+        // TODO AFFICHER
         dump($documents);
-        // afficher les doc upload
+
+
 
         return $this->render('documents/DocumentView.html.twig', [
             'documents' => $documents,
