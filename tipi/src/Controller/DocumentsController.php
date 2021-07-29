@@ -13,6 +13,8 @@ use App\Repository\DocumentsRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -64,11 +66,11 @@ class DocumentsController extends AbstractController
     }
 
     // Suppression d'une catégorie pour les documents
-    //!!!!!!!!!!!!!!!! PREVENIR MSG D'ERREUR SI CAT utilisée par un DOC !!!!!!!!!!!!!
+    //!!!!!!!!!!!!!!!! PRÉVENIR MSG D'ERREUR SI CAT utilisée par un DOC !!!!!!!!!!!!!
     /**
      * @Route("/categoryDocumentDelete/{id}", name="categoryDocumentDelete")
      */
-    public function categoryDocumentDelete(CategoryDocument $CategoryDocumentDelete, EntityManagerInterface $manager): \Symfony\Component\HttpFoundation\RedirectResponse
+    public function categoryDocumentDelete(CategoryDocument $CategoryDocumentDelete, EntityManagerInterface $manager): RedirectResponse
     {
          $manager->remove($CategoryDocumentDelete);
          $manager->flush();
@@ -82,7 +84,6 @@ class DocumentsController extends AbstractController
      */
     public function viewCategoryDocument(CategoryDocumentRepository $repo): Response
     {
-        $user =
 
 //        // On appel getManager pour récupérer le noms des champs et des colonnes
 //        $em = $this->getDoctrine()->getManager();
@@ -100,12 +101,13 @@ class DocumentsController extends AbstractController
         ]);
     }
 
-    // Ajouter / Editer un document
+    // Ajouter / Éditer un document
+    //!!!!!!!!!!!!!!!!!!!! VERIFIER PK $manager est déclaré comme non utilisé
     /**
      * @Route("/documentAdd", name="documentAdd")
      * @Route("/documentEdit/{id}", name="documentEdit")
      */
-    public function DocumentAddEdit(Documents $DocumentNew = null, Request $request, EntityManagerInterface $manager): Response
+    public function DocumentAddEdit(Documents $DocumentNew = null, Request $request): Response
     {
         if(!$DocumentNew)
         {
@@ -197,7 +199,7 @@ class DocumentsController extends AbstractController
     /**
      * @Route("/documentDelete/{id}", name="documentDelete")
      */
-    public function documentDelete(Documents $DocumentDelete, EntityManagerInterface $manager): \Symfony\Component\HttpFoundation\RedirectResponse
+    public function documentDelete(Documents $DocumentDelete, EntityManagerInterface $manager): RedirectResponse
     {
         $manager->remove($DocumentDelete);
         $manager->flush();
@@ -215,9 +217,9 @@ class DocumentsController extends AbstractController
         // https://symfony.com/doc/current/doctrine/associations.html
 
         // On appel getManager pour récupérer le noms des champs et des colonnes
-        $em = $this->getDoctrine()->getManager();
+//        $em = $this->getDoctrine()->getManager();
         // récupération des champs
-        $colonnes = $em->getClassMetadata(Documents::class)->getFieldNames();
+//        $colonnes = $em->getClassMetadata(Documents::class)->getFieldNames();
         // dump($colonnes);
 
         $documents = $repo->findBy(array("user" => $user));
@@ -232,7 +234,7 @@ class DocumentsController extends AbstractController
     /**
      * @Route("/oneViewDocument/{id}", name="oneViewDocument")
      */
-    public function oneViewDocument(Documents $documents, Request $request): Response
+    public function oneViewDocument(Documents $documents): Response
     {
         // TODO AFFICHER LES DOCUMENTS UPLOAD
 
