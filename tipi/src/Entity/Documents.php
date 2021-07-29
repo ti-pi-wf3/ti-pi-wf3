@@ -52,7 +52,7 @@ class Documents
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity=Files::class, mappedBy="documents")
+     * @ORM\OneToMany(targetEntity=Files::class, mappedBy="documents",cascade={"persist"})
      */
     private $files;
 

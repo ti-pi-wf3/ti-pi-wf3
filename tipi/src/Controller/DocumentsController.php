@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\CategoryDocument;
 use App\Entity\Documents;
 use App\Entity\User;
+use App\Entity\Files;
 use App\Form\CategoryDocumentAddType;
 use App\Form\DocumentAddType;
 use App\Repository\CategoryDocumentRepository;
@@ -116,6 +117,29 @@ class DocumentsController extends AbstractController
 
         if($formDocumentAdd->isSubmitted() && $formDocumentAdd->isValid())
         {
+            // On récupère les images transmises
+            $files = $formDocumentAdd->get('files')->getData();
+
+            // On boucle sur les images
+            foreach($files as $file){
+                // On génère un nouveau nom de fichier
+                $fichier = md5(uniqid()).'.'.$file->guessExtension();
+
+                // On copie le fichier dans le dossier uploads
+                $file->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+
+                // On crée l'image dans la base de données
+                $img = new Files();
+                $img->setTitleFile($fichier);
+                $img->setDescription($fichier);
+                $img->setFileUpload($fichier);
+                $img->setDate(new DateTime());
+                $DocumentNew->addFile($img);
+            }
+
             $user = $this->getUser();
             //* Ajout de la date now
             $DocumentNew->setDate(new DateTime());
@@ -125,6 +149,7 @@ class DocumentsController extends AbstractController
 
             /** @var User $user */
             $DocumentNew->setUser($user);
+            $manager = $this->getDoctrine()->getManager();
             $manager->persist($DocumentNew);
             $manager->flush();
 
@@ -138,8 +163,34 @@ class DocumentsController extends AbstractController
         return $this->render('documents/documentAdd.html.twig', [
             'controller_name' => 'Ajouter un document',
             'formDocumentAdd' => $formDocumentAdd->createView(),
-            'editMode' => $DocumentNew->getId()
+            'editMode' => $DocumentNew->getId(),
+            'document' => $DocumentNew
         ]);
+    }
+
+    /**
+     * @Route("/supprime/image/{id}", name="annonces_delete_image", methods={"DELETE"})
+     */
+    public function deleteImage(Files $file, Request $request){
+        $data = json_decode($request->getContent(), true);
+
+        // On vérifie si le token est valide
+        if($this->isCsrfTokenValid('delete'.$file->getId(), $data['_token'])){
+            // On récupère le nom de l'image
+            $nom = $file->getTitleFile();
+            // On supprime le fichier
+            unlink($this->getParameter('images_directory').'/'.$nom);
+
+            // On supprime l'entrée de la base
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($file);
+            $em->flush();
+
+            // On répond en json
+            return new JsonResponse(['success' => 1]);
+        }else{
+            return new JsonResponse(['error' => 'Token Invalide'], 400);
+        }
     }
 
     // Suppression d'un document
