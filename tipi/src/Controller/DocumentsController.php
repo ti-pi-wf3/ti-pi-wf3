@@ -238,6 +238,7 @@ class DocumentsController extends AbstractController
     {
         // TODO AFFICHER LES DOCUMENTS UPLOAD
         dump($documents);
+        // afficher les doc upload
 
         return $this->render('documents/DocumentView.html.twig', [
             'documents' => $documents,
