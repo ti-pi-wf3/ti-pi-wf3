@@ -30,9 +30,15 @@ class Tribe
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CategoryDocument::class, mappedBy="tribeCategoryDoc")
+     */
+    private $categoryDocumentsTribe;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->categoryDocumentsTribe = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,6 +82,36 @@ class Tribe
             // set the owning side to null (unless already changed)
             if ($user->getTribeId() === $this) {
                 $user->setTribeId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CategoryDocument[]
+     */
+    public function getCategoryDocumentsTribe(): Collection
+    {
+        return $this->categoryDocumentsTribe;
+    }
+
+    public function addCategoryDocumentsTribe(CategoryDocument $categoryDocumentsTribe): self
+    {
+        if (!$this->categoryDocumentsTribe->contains($categoryDocumentsTribe)) {
+            $this->categoryDocumentsTribe[] = $categoryDocumentsTribe;
+            $categoryDocumentsTribe->setTribeCategoryDoc($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategoryDocumentsTribe(CategoryDocument $categoryDocumentsTribe): self
+    {
+        if ($this->categoryDocumentsTribe->removeElement($categoryDocumentsTribe)) {
+            // set the owning side to null (unless already changed)
+            if ($categoryDocumentsTribe->getTribeCategoryDoc() === $this) {
+                $categoryDocumentsTribe->setTribeCategoryDoc(null);
             }
         }
 

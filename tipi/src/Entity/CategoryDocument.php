@@ -29,6 +29,12 @@ class CategoryDocument
      */
     private $documents;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Tribe::class, inversedBy="categoryDocumentsTribe")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $tribeCategoryDoc;
+
     public function __construct()
     {
         $this->documents = new ArrayCollection();
@@ -77,6 +83,18 @@ class CategoryDocument
                 $document->setCategoryDocument(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTribeCategoryDoc(): ?tribe
+    {
+        return $this->tribeCategoryDoc;
+    }
+
+    public function setTribeCategoryDoc(?tribe $tribeCategoryDoc): self
+    {
+        $this->tribeCategoryDoc = $tribeCategoryDoc;
 
         return $this;
     }
