@@ -13,22 +13,20 @@
     {% endfor %}
 
     <div class="text-center pb-4">
-{#        <a href="{{ path('categoryDocumentAdd') }}" class="text-dark">Ajouter une catégorie</a>#}
+        <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="<< Retour à vos documents"></a>
         <a href="{{ path('categoryDocumentAdd') }}"><input type="button" class="button" value="Ajouter une catégorie"></a>
-
     </div>
 
 
     <table class="table table-bordered text-center">
 
         <tr>
-            {% for data in colonnes %}
-                {% if data != 'id' %}
-                    {# <th>{{ data }}</th> #}
-                    <th>CATEGORY</th>
-                {% endif %}
-            {% endfor %}
-            {# <th>Catégorie</th> #}
+{#            {% for data in colonnes %}#}
+{#                {% if data != 'id' %}#}
+{#                    #}{# <th>{{ data }}</th> #}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+            <th>CATEGORY</th>
             <th>Edit</th>
             <th>Supp</th>
         </tr>

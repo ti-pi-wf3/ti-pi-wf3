@@ -4,7 +4,7 @@
 
 {% block body %}
 
-     <h1 class="text-center pb-4">{{ controller_name }}</h1>
+     <h1 class="text-center pb-4 title">{{ controller_name }}</h1>
 
     {% for message in app.flashes("success") %}
         <div class="col-md-4 mx-auto alert alert-primary text-center p-2">
@@ -13,8 +13,9 @@
     {% endfor %}
 
     <div class="text-center pb-4">
+        <a href="{{ path('user') }}"><input type="button" class="buttonR" value="Accueil"></a>
         <a href="{{ path('documentAdd') }}"><input type="button" class="button" value="Ajouter un document"></a>
-        <a href="{{ path('viewCategoryDocument') }}"><input type="button" class="button" value="Catégories"></a>
+        <a href="{{ path('viewCategoryDocument') }}"><input type="button" class="buttonR" value="Catégories"></a>
     </div>
 
 
