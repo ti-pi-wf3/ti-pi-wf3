@@ -19,6 +19,11 @@
 
             <small class="date">Enregistré le : {{ documents.date|date('d/m/Y') }}</small>
 
+            <div class="col-md-6 mx-auto text-center m-4 p-4">
+                <a class="iconLink" href="{{ path('documentEdit' , {'id' : documents.id }) }}"><i class="bi bi-pencil mx-2"></i></a>
+                <a class="iconLink" href="{{ path('documentDelete' , {'id' : documents.id }) }}"><i class="bi bi-trash"></i></a>
+            </div>
+
             <hr>
 
             <p class="card-text mb-auto">{{ documents.description}}</p>
@@ -27,12 +32,8 @@
         </div>
 
     </div>
-    {# la fonction path() attend en argument le NOM de la route définit ds le fichier Controller.php ds l'annonce de la @Route("", name="NOM_ROUTE") #}
-    {# <a href="{{ path('council') }}">Retour aux réunions !</a> #}
-    {# <a href="{{ path('councilEdit', {"id": councilBDD.id}) }}">Modifier</a> #}
     <div class="col-md-6 mx-auto text-center m-4 p-4">
-{#        <a href="{{ path('council') }}"><input type="button" class="button" value="Retour aux réunions !"></a>#}
-{#        <a href="{{ path('councilEdit', {"id": councilBDD.id}) }}"><input type="button" class="buttonR" value="Modifier"></a>#}
+        <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="Vos documents"></a>
     </div>
 
 {% endblock %}

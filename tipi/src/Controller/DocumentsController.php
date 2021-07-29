@@ -104,7 +104,7 @@ class DocumentsController extends AbstractController
      * @Route("/documentAdd", name="documentAdd")
      * @Route("/documentEdit/{id}", name="documentEdit")
      */
-    public function DocumentAddEdit(Documents $DocumentNew = null,Request $request, EntityManagerInterface $manager): Response
+    public function DocumentAddEdit(Documents $DocumentNew = null, Request $request, EntityManagerInterface $manager): Response
     {
         if(!$DocumentNew)
         {
@@ -130,7 +130,7 @@ class DocumentsController extends AbstractController
 
             $this->addFlash('success', 'Le document a bien été ajouté !');
 
-            return $this->redirectToRoute('oneViewDocument', [
+            return $this->redirectToRoute('viewDocuments', [
                 "id" => $DocumentNew->getId()
             ]);
         }
@@ -139,7 +139,6 @@ class DocumentsController extends AbstractController
             'controller_name' => 'Ajouter un document',
             'formDocumentAdd' => $formDocumentAdd->createView(),
             'editMode' => $DocumentNew->getId()
-//            'editMode' => $DocumentNew->getId() !== null
         ]);
     }
 
@@ -184,10 +183,9 @@ class DocumentsController extends AbstractController
      */
     public function oneViewDocument(Documents $documents, CategoryDocument $categoryDocument, Request $request): Response
     {
-
         dump($request->server->get('DOCUMENT_ROOT'));
 
-        return $this->render('documents/documentView.html.twig', [
+        return $this->render('documents/DocumentView.html.twig', [
             'documents' => $documents,
             'categoryDocument' => $categoryDocument,
             'controller_name' => 'Votre document'

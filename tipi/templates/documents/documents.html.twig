@@ -37,7 +37,7 @@
 
         {% for key, data in Documents %}
             <tr>
-                <td><a class="iconLink" href=""><i class="bi bi-eye mx-2"></i></a></td>
+                <td><a class="iconLink" href="{{ path('oneViewDocument' , {'id' : data.id }) }}"><i class="bi bi-eye mx-2"></i></a></td>
                 <td>{{ data.titleDocument }}</td>
                 <td>{{ data.description}}</td>
                 <td>{{ data.categoryDocument.titleCategoryDoc }}</td>
