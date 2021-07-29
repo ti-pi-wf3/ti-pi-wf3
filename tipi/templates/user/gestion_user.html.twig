@@ -17,39 +17,25 @@
         {% endfor %}    
 
     <div class="d-flex justify-content-center mb-2">
-    <div class="accueil mb-3">
-        
-    </div>
+        <div class="accueil mb-3">
+        </div>
     </div>
 <div class="row d-flex justify-content-center align-items-center">
 
         {% for oneTribe in usersBDD %}
-
             {# {{ dump(oneTribe) }} #}
 
             <div class="cardUser d-flex flex-column justify-content-center align-items px-4 mx-2 mb-2">
                 
-                
-                    <h4 class="mb-0 titreUser">{{ oneTribe.firstName }}, {{ oneTribe.lastName }}</h4>
-                    <h5 class="mb-0 titreUser">{{ oneTribe.status }}</h5>
+                <h4 class="mb-0 titreUser">{{ oneTribe.firstName }}, {{ oneTribe.lastName }}</h4>
+                <h5 class="mb-0 titreUser">{{ oneTribe.status }}</h5>
                     
-
-                    {# {% if oneTribe.role[0] == 'ROLE_SUPER_USER' %}
-                    <h3 class="mb-0">Chef de Tribu</h3>
-                {% else %}
-                    <h3 class="mb-0">Membre de la Tribu</h3>
-                {% endif %} #}
-
                     <h5 class="mb-0">
-                    {# {% for viewRole in role %} #}
-
-                    {% if oneTribe.roles[0] == 'ROLE_SUPER_USER' %}
-                        <p class="mb-0">Chef de Tribu</p>
-                    {% else  %}
-                        <p class="mb-0">Membre de la Tribu</p>
-                    {% endif %}
-                    
-                    {# {% endfor %} #}
+                        {% if oneTribe.roles[0] == 'ROLE_SUPER_USER' %}
+                            <p class="mb-0">Chef de Tribu</p>
+                        {% else  %}
+                            <p class="mb-0">Membre de la Tribu</p>
+                        {% endif %}
                     </h5>
 
                     {% if is_granted('ROLE_SUPER_USER') %}
@@ -58,7 +44,6 @@
                         <a class="iconLinkUser" href="{{ path('addMember_edit' , {'id' : oneTribe.id}) }}"><i class="bi bi-pencil mx-2"></i></a>
                     </div>
                     {% endif %}
-            
             </div>
 
         {% endfor %}
