@@ -28,12 +28,15 @@
 {#            <h1 class="text-center my-4">Ajouter une catégorie pour vos documents </h1>#}
 
             {{ form_start(formCategoryDocumentAdd) }}
+
 {#            {{ form_start(formCategoryDocumentAdd, {'attr': {'class': 'col-md-7 mx-auto'} }) }}#}
 
             {{ form_row(formCategoryDocumentAdd.titleCategoryDoc) }}
+
 {#            {{ form_row(formCategoryDocumentAdd.titleCategoryDoc, { 'attr': {'placeholder': "Titre de la catégorie"} }) }}#}
 
 {#            <button type="submit" class="btn btn-warning mb-5">Valider l'ajout d'une catégorie pour vos documents</button>#}
+
             {% if editMode %}
                 <input type="submit" class="button" value="Valider">
                 <a href="{{ path('viewCategoryDocument') }}"><input type="button" class="buttonR" value="Annuler"></a>

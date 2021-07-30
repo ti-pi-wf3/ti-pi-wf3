@@ -27,15 +27,20 @@
 
 
             {{ form_widget(formDocumentAdd) }}
-
+            {% if editMode %}
+                <input type="submit" class="button" value="Modifier votre document">
+                <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="Annuler"></a>
+            {% else %}
+                <input type="submit" class="button" value="Ajouter votre document">
+                <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="Annuler"></a>
+            {% endif %}
 
             {# Si la route est "annonces_edit on affiche les images #}
             {% if app.request.attributes.get('_route') == 'documentEdit' %}
-                <h2>Documents</h2>
+                <h2 class="title text-center">Documents</h2>
                 {% for file in document.files %}
-                    <div>
-                        <img src="{{ asset('/uploads/'~file.titleFile) }}" alt="" width="150">
-
+                    <div class="d-flex flex-wrap justify-content-center mx-auto text-center">
+                        <embed src={{ asset('/uploads/'~file.titleFile) }} width=500 height=700 type='application/pdf'/>
                         {# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
                         <a href="{{ path('annonces_delete_image', {'id' : file.id }) }}" data-delete data-token="{{ csrf_token('delete' ~ file.id )}}">Supprimer</a>
                     </div>
@@ -44,13 +49,7 @@
 
             <hr>
 
-            {% if editMode %}
-                <input type="submit" class="button" value="Modifier votre document">
-                <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="Annuler"></a>
-            {% else %}
-                <input type="submit" class="button" value="Ajouter votre document">
-                <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="Annuler"></a>
-            {% endif %}
+
 
             {{ form_end(formDocumentAdd) }}
 

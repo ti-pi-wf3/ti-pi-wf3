@@ -10,6 +10,7 @@ use App\Form\CategoryDocumentAddType;
 use App\Form\DocumentAddType;
 use App\Repository\CategoryDocumentRepository;
 use App\Repository\DocumentsRepository;
+use App\Repository\FilesRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -75,13 +76,13 @@ class DocumentsController extends AbstractController
      */
     public function categoryDocumentDelete(CategoryDocument $CategoryDocumentDelete, EntityManagerInterface $manager): RedirectResponse
     {
-         $manager->remove($CategoryDocumentDelete);
-         $manager->flush();
-         $this->addFlash('success', "La catégorie a bien été supprimée !");
-         return $this->redirectToRoute('viewCategoryDocument');
-     }
+        $manager->remove($CategoryDocumentDelete);
+        $manager->flush();
+        $this->addFlash('success', "La catégorie a bien été supprimée !");
+        return $this->redirectToRoute('viewCategoryDocument');
+    }
 
-     // Vue des catégories par tribu
+    // Vue des catégories par tribu
     /**
      * @Route("/viewCategoryDocument", name="viewCategoryDocument")
      */
@@ -161,7 +162,7 @@ class DocumentsController extends AbstractController
             $manager->persist($DocumentNew);
             $manager->flush();
 
-            $this->addFlash('success', 'Le document a bien été ajouté !');
+//            $this->addFlash('success', 'Le document a bien été ajouté !');
 
             return $this->redirectToRoute('oneViewDocument', [
                 "id" => $DocumentNew->getId()
@@ -241,12 +242,8 @@ class DocumentsController extends AbstractController
     /**
      * @Route("/oneViewDocument/{id}", name="oneViewDocument")
      */
-    public function oneViewDocument(Documents $documents): Response
+    public function oneViewDocument(Documents $documents, FilesRepository $files): Response
     {
-        // TODO AFFICHER
-        dump($documents);
-
-
 
         return $this->render('documents/DocumentView.html.twig', [
             'documents' => $documents,
