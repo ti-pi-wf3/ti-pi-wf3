@@ -110,6 +110,7 @@ class DocumentsController extends AbstractController
 
     // Ajouter / Éditer un document
     //!!!!!!!!!!!!!!!!!!!! VERIFIER PK $manager est déclaré comme non utilisé
+    // n'afficher dans le formulaire que les catégorie de sa tribu
     /**
      * @Route("/documentAdd", name="documentAdd")
      * @Route("/documentEdit/{id}", name="documentEdit")
