@@ -19,22 +19,22 @@ class ListeRepository extends ServiceEntityRepository
         parent::__construct($registry, Liste::class);
     }
 
-    // /**
-    //  * @return Liste[] Returns an array of Liste objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Liste[] Returns an array of Liste objects
+     */
+    
+    public function selectGroupDate()
     {
         return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('l.user = :val')
+            ->setParameter('val', $this->getUser())
+            ->orderBy('l.date', 'ASC')
+            ->groupBy('date')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Liste
