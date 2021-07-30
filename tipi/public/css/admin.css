@@ -30,7 +30,7 @@
     margin-bottom: 50px;
 }
 .login{
-    
+
     height: 300px;
     width: 550px;
     background-image: url(../assets/logintipi.png);
@@ -45,7 +45,7 @@
 
 hr{
     border-top:3px #7c4dff solid ;
-    
+
 }
 /* BUTTON de base*/
 .button{
@@ -65,7 +65,7 @@ hr{
     border: solid #7c4dff 3px;
     color: #7c4dff;
     padding: 12px 27px;
-    
+
 }
 
 /* BUTTON DECONNEXION*/
@@ -77,7 +77,7 @@ hr{
     text-align:center;
     border-radius: 70px;
     font-size: 14px;
-    
+
 }
 .buttonR:hover{
     background-color: white;
@@ -88,7 +88,7 @@ hr{
     border-radius: 70px;
     font-size: 14px;
 }
- /* PAGE MEMO */
+/* PAGE MEMO */
 .task{
     background-color: white;
     color: #7c4dff;
@@ -100,7 +100,7 @@ hr{
 }
 
 .task::-webkit-scrollbar{
-display:none;
+    display:none;
 
 }
 
@@ -122,7 +122,7 @@ display:none;
     background-image: url(../assets/plushover.png);
 }
 
-    /* icone modif memo */
+/* icone modif memo */
 .iconLink{
     color: #7c4dff;
 }
@@ -181,17 +181,17 @@ display:none;
     width: 300px;
     border-radius: 10px;
     background-color: #ffad00;
-    ;
+;
 }
 
-    /* icone modif user */
-    .iconLinkUser{
-        color: #7c4dff;
-    }
-    
-    .iconLinkUser:hover{
-        color: #ffffff;
-    }
+/* icone modif user */
+.iconLinkUser{
+    color: #7c4dff;
+}
+
+.iconLinkUser:hover{
+    color: #ffffff;
+}
 
 .titreUser{
     color: #7c4dff;
