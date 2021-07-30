@@ -32,7 +32,7 @@ class AddMemberType extends AbstractType
             ])
             ->add('status')
             ->add('firstName', TextType::class,[
-                'label'       => 'Prénom',
+                // 'label'       => 'Prénom',
                 'required'    => false,
                 'constraints' =>[
 
@@ -50,7 +50,7 @@ class AddMemberType extends AbstractType
                 ]
             ])
             ->add('lastName', TextType::class, [
-                'label'       => 'Nom',
+                // 'label'       => 'Nom',
                 'required'    => false,
                 'constraints' =>[
                     new Length([
@@ -67,7 +67,7 @@ class AddMemberType extends AbstractType
                 ]
             ])
             ->add('maidenName', TextType::class, [
-                'label'       => 'Nom de jeune fille',
+                // 'label'       => 'Nom de jeune fille',
                 'required'    => false,
                 'constraints' =>[
                     new Length([
@@ -89,7 +89,7 @@ class AddMemberType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('phone', TextType::class, [
-                'label'     => 'Téléphone',
+                // 'label'     => 'Téléphone',
                 'required' => false,
                 'constraints' =>[
                     new Regex(array(

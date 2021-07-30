@@ -130,7 +130,7 @@ class ListeController extends AbstractController
 
             $manager->flush();
 
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('liste');
             
 
         }
@@ -145,16 +145,19 @@ class ListeController extends AbstractController
      * @Route("/liste", name="liste")
      */
 
-    public function viewList(EntityManagerInterface $manager, Request $request, ListeRepository $repoListes):Response
+    public function viewList(EntityManagerInterface $manager, ListeRepository $repoListes):Response
     {
-        
 
-        $liste = $repoListes->findBy([
-            'date' => $request->query->get('date')
-        ]);
+        $liste = $repoListes->findBy(
+            ['user' => $this->getUser()],
+            ['date' => 'ASC']
+        );
 
+        dump($liste);
+
+        // dump($article);
             return $this->render('liste/index.html.twig', [
-                'listesBDD' => $liste
+                'listes' => $liste
             ]);
         
     }
