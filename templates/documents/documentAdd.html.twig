@@ -1,0 +1,65 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}
+    {% if editMode %}
+        DOCUMENTS | Modifier un document
+    {% else %}
+        DOCUMENTS | Ajouter un document
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="display-4 text-center my-4 title">
+        {% if editMode %}
+            Modifier votre document
+        {% else %}
+            Ajouter un document
+        {% endif %}
+    </h1>
+
+    <div class="container">
+        <div class="row">
+
+            {{ form_start(formDocumentAdd) }}
+
+            {# {{ form_row(formDocumentAdd.fileTitle) }} #}
+
+
+            {{ form_widget(formDocumentAdd) }}
+            {% if editMode %}
+                <input type="submit" class="button" value="Modifier votre document">
+                <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="Annuler"></a>
+            {% else %}
+                <input type="submit" class="button" value="Ajouter votre document">
+                <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="Annuler"></a>
+            {% endif %}
+
+            {# Si la route est "annonces_edit on affiche les images #}
+            {% if app.request.attributes.get('_route') == 'documentEdit' %}
+                <h2 class="title text-center">Documents</h2>
+                {% for file in document.files %}
+                    <div class="d-flex flex-wrap justify-content-center mx-auto text-center">
+                        <embed src={{ asset('/uploads/'~file.titleFile) }} width=500 height=700 type='application/pdf'/>
+                        {# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
+                        <a href="{{ path('annonces_delete_image', {'id' : file.id }) }}" data-delete data-token="{{ csrf_token('delete' ~ file.id )}}">Supprimer</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <hr>
+
+
+
+            {{ form_end(formDocumentAdd) }}
+
+        </div>
+    </div>
+
+{#    {{ include('documents/fomrEditDocument.html.twig', {'button_label': 'Update'}) }}#}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/files.js') }}"></script>
+{% endblock %}

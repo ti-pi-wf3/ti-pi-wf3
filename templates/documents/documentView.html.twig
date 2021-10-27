@@ -1,0 +1,50 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}DOCUMENTS | Votre document{% endblock %}
+
+{% block body %}
+
+    {#    <div class="text-center pb-4">#}
+    {#        <a href="{{ path('categoryDocumentAdd') }}"><input type="button" class="button" value="Ajouter une catégorie"></a>#}
+    {#    </div>#}
+
+    {#    <h4 class='title text-center mb-5'>Votre document</h4>#}
+    <div class="col-md-6 mx-auto text-center m-4 p-4">
+        <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="Vos documents"></a>
+    </div>
+
+    <div class="row mb-2 d-flex border rounded overflow-hidden shadow-sm justify-content-center flex-wrap">
+        <div class="col-md-6 mx-auto text-center p-6">
+
+            <h3 class="title mt-2">{{ documents.titleDocument }}</h3>
+
+            <h4>{{ documents.categoryDocument.titleCategoryDoc }}</h4>
+
+            <small class="date">Enregistré le : {{ documents.date|date('d/m/Y') }}</small>
+
+            <div class="col-md-6 mx-auto text-center m-4 p-4">
+                <a class="iconLink" href="{{ path('documentEdit' , {'id' : documents.id }) }}"><i class="bi bi-pencil mx-2"></i></a>
+                <a class="iconLink" href="{{ path('documentDelete' , {'id' : documents.id }) }}"><i class="bi bi-trash"></i></a>
+            </div>
+
+            <hr>
+
+            <p class="card-text mb-auto">{{ documents.description}}</p>
+        </div>
+    </div>
+
+
+
+            {% for file in documents.files %}
+                <div class="d-flex flex-wrap justify-content-center mx-auto text-center">
+                    <a href="{{ asset('/uploads/'~file.titleFile) }}" target="_blank">
+                        <embed src={{ asset('/uploads/'~file.titleFile) }} width=500 height=700 type='application/pdf'/>
+                    </a>
+                </div>
+            {% endfor %}
+
+
+
+
+
+{% endblock %}
