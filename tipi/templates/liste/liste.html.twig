@@ -1,0 +1,68 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Hello Liste de trucs{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+            {# {% if articlesBDD.categoryArticle is not empty %} #}
+
+            <h3 class="title text-center">Courses</h3>
+
+                <div class="text-center my-4 d-flex justify-content-center">
+                    <div>
+                        <a class="mx-2" href="{{ path('category') }}"><input type="button" class="button" value="Ajouter une catégorie"></a>
+                    </div>
+                
+                    <div>
+                        <a class="mx-2" href="{{ path('article') }}"><input type="button" class="button" value="Ajouter un article"></a>
+                    </div>
+                </div>
+
+    <form class="d-flex flex-wrap" method="POST">
+
+                <label for="title_list">Titre de la liste</label>
+                <input id="title_list" name="title_list[]">
+
+                {% for oneCat in catBDD %}
+                
+                <div class="task col-3 mx-auto my-1 ">
+                    <div class="text-center mt-2">
+                    <h4>{{ oneCat.titleCategoryArticle }}</h4>
+                    </div> <hr>
+                        {% for oneArticle in oneCat.articles %}
+    
+                        <div class="form-check ms-4">
+                            <input class="form-check-input" type="checkbox" name="{{ oneCat.titleCategoryArticle }}[]" value="{{ oneArticle.titleArticle }}" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <p>{{ oneArticle.titleArticle }}</p>
+                            </label>
+                        </div>
+                        {# <div>
+                        <select name="quantity[]" id="quantity">
+                            <option>Selectionner une qté</option>
+                        {% for  i in 0..10  %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                        </select>
+                        </div> #}
+{# {{dump(oneArticle.titleArticle) }} #}
+
+                        {% endfor %}
+                </div>
+            
+                {% endfor %}
+                    <div class="d-flex justify-content-center mt-4">
+                        <input type="submit" class="button" value="Créer une liste">
+                    </div>
+</form>
+            {# {% endif %} #}
+                
+    </div>
+
+
+                
+    {# </div> #}
+
+{% endblock %}

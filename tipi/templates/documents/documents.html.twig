@@ -1,0 +1,53 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}DOCUMENTS | Vos documents{% endblock %}
+
+{% block body %}
+
+     <h1 class="text-center pb-4 title">{{ controller_name }}</h1>
+
+    {% for message in app.flashes("success") %}
+        <div class="col-md-4 mx-auto alert alert-primary text-center p-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="text-center pb-4">
+        <a href="{{ path('user') }}"><input type="button" class="buttonR" value="Accueil"></a>
+        <a href="{{ path('documentAdd') }}"><input type="button" class="button" value="Ajouter un document"></a>
+        <a href="{{ path('viewCategoryDocument') }}"><input type="button" class="buttonR" value="Catégories"></a>
+    </div>
+
+
+    <table class="table table-striped mt-3">
+
+        <tr class="bg-dark text-center text-white">
+{#            {% for data in colonnes %}#}
+{#                {% if data != 'id' %}#}
+{#                    #}{# <th>{{ data }}</th> #}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+            <th>VIEW</th>
+            <th>DOCUMENT</th>
+            <th>CONTENU</th>
+            <th>CATEGORIE</th>
+            <th>DATE</th>
+            <th>Edit</th>
+            <th>Supp</th>
+        </tr>
+
+        {% for key, data in Documents %}
+            <tr>
+                <td><a class="iconLink" href="{{ path('oneViewDocument' , {'id' : data.id }) }}"><i class="bi bi-eye mx-2"></i></a></td>
+                <td>{{ data.titleDocument }}</td>
+                <td>{{ data.description}}</td>
+                <td>{{ data.categoryDocument.titleCategoryDoc }}</td>
+                <td>{{data.date|date('d/m/Y')}}</td>
+                <td><a class="iconLink" href="{{ path('documentEdit' , {'id' : data.id }) }}"><i class="bi bi-pencil mx-2"></i></a></td>
+                <td><a class="iconLink" href="{{ path('documentDelete' , {'id' : data.id }) }}"><i class="bi bi-trash"></i></a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

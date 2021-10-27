@@ -1,0 +1,47 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}DOCUMENTS | Ajouter une catégorie de document{% endblock %}
+
+{% block body %}
+
+    {# <h1>{{ controller_name }}</h1> #}
+
+    {% for message in app.flashes("success") %}
+        <div class="col-md-4 mx-auto alert alert-primary text-center p-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="text-center pb-4">
+        <a href="{{ path('viewDocuments') }}"><input type="button" class="buttonR" value="<< Retour à vos documents"></a>
+        <a href="{{ path('categoryDocumentAdd') }}"><input type="button" class="button" value="Ajouter une catégorie"></a>
+    </div>
+
+
+    <table class="table table-striped mt-3">
+
+        <tr class="bg-dark text-center text-white">
+{#            {% for data in colonnes %}#}
+{#                {% if data != 'id' %}#}
+{#                    #}{# <th>{{ data }}</th> #}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+            <th>CATEGORY</th>
+            <th>Edit</th>
+            <th>Supp</th>
+        </tr>
+        {% for key, data in categoryDocument %}
+            <tr>
+                <td>{{ data.titleCategoryDoc }}</td>
+
+{#                  <td><a href="{{ path('categoryDocumentEdit', {'id': data.id }) }}" class="text-dark"><i class="bi bi-pencil"></i></a></td>#}
+                    <td><a class="iconLink" href="{{ path('categoryDocumentEdit' , {'id' : data.id }) }}"><i class="bi bi-pencil mx-2"></i></a></td>
+{#                  <td><a href="{{ path('categoryDocumentDelete', {'id': data.id })}}" class="text-dark"><i class="bi bi-trash"></i></a></td>#}
+                    <td><a class="iconLink" href="{{ path('categoryDocumentDelete' , {'id' : data.id }) }}"><i class="bi bi-trash"></i></a></td>
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

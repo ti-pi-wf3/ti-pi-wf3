@@ -1,0 +1,76 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Répertoire{% endblock %}
+
+{% block body %}
+
+        <h1 class="title text-center">Le répertoire de ma Tribu</h1>
+        <h5 class="title text-center">Liste de mes contacts: </h5>
+        
+        <div class="text-center my-4">
+        <a href="{{ path('repertoire') }}"><input type="button" class="button" value="Ajouter un contact"></a>
+        </div>
+    {% for message in app.flashes('success') %}
+
+        <div class="d-flex justify-content-center">
+            <div class="alert alert-dark text-center col-5 my-2" role="alert">
+            {{ message }}
+            </div>
+        </div>
+
+    {% endfor %}
+<div class="table-responsive-md">
+    <table class="table table-striped mt-3">
+        <tr class="bg-dark text-center text-white">
+        
+            {# {% for oneColonne in colonne %}
+
+            {% if oneColonne != 'id' and oneColonne != 'updated_at' and oneColonne != 'indPhoneHome' and oneColonne != 'indPhone' and oneColonne != 'indPhonePro' %}
+                <th>{{ oneColonne|upper }}</th>
+            {% endif %}
+
+            {% endfor %} #}
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Pays</th>
+                <th>Code Postal</th>
+                <th>Téléphone Maison</th>
+                <th>Téléphone Portable</th>
+                <th>Téléphone Professionnel</th>
+                <th>Email</th>
+                <th>Email Professionnel</th>
+                <th>Photo</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+        </tr>
+
+        {% for oneRepertoire in repertoiresBDD %}
+            <tr>
+                <td> {{ oneRepertoire.firstName }}</td>
+                <td> {{ oneRepertoire.lastName }}</td>
+                <td> {{ oneRepertoire.adress }}</td>
+                <td> {{ oneRepertoire.country }}</td>
+                <td> {{ oneRepertoire.postalCode }}</td>
+                <td> {{ oneRepertoire.indPhoneHome }}{{ oneRepertoire.phoneHome }}</td>
+                <td> {{ oneRepertoire.indPhone }}{{ oneRepertoire.phone }}</td>
+                <td> {{ oneRepertoire.indPhonePro }}{{ oneRepertoire.phonePro }}</td>
+                <td> {{ oneRepertoire.email }}</td>
+                <td> {{ oneRepertoire.emailPro }}</td>
+                <td>
+                    <img src="{{ asset('images/products/' ~ oneRepertoire.picture) }}" alt="" class="img-thumbnail rounded-circle height: 150">
+                </td>
+                    
+                <td>
+                    <a class="iconLink" href="{{ path('editContact', {'id': oneRepertoire.id}) }}"><i class="bi bi-pencil mx-2"></i></a>
+                </td> 
+                <td>
+                    <a class="iconLink" href="{{ path('removeContact', {'id': oneRepertoire.id}) }}" 
+                        onclick="return(confirm('Voulez-vous réellement supprimer ce commentaire ?'));"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>     
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Hello Category!{% endblock %}
+
+{% block body %}
+
+
+<h1 class="text-center my-4 title">Ajouter une categorie </h1>
+
+{{ form_start(formCategory) }}
+
+    {{ form_row(formCategory.titleCategoryArticle, 
+    {label: 'Titre de catégorie'}
+    ) }}
+
+
+    <div class="my-4 text-center">
+        <input type="button" class="button" value="Ajouter">
+    </div>
+
+{{ form_end(formCategory) }}
+
+
+        <div class="my-4 text-center">
+<a href="{{ path('viewArticle') }}"><input type="button" class="button" value="Retour"></a>        </div>
+        </div>
+
+
+
+
+{% endblock %}

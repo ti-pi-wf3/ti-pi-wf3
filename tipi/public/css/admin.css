@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+/* body{
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+} */
+/* BARRE MENU */
+.menu{
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    color: #7c4dff;
+}
+
+.menu:hover{
+    color: #ffad00;
+}
+
+.colorName{
+    color: #ffad00;
+}
+/* IMAGES */
+.dashboard{
+    height: 300px;
+    width: 1080px;
+    background-image:url(../assets/dashboard.png);
+    background-repeat: no-repeat;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.login{
+
+    height: 300px;
+    width: 550px;
+    background-image: url(../assets/logintipi.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+/* VALABLE POUR TOUT LES TITRES */
+.title{
+    font-family: 'Fredoka One';
+}
+
+hr{
+    border-top:3px #7c4dff solid ;
+
+}
+/* BUTTON de base*/
+.button{
+    background-color: #7c4dff;
+    border: none;
+    color: white;
+    text-align:center;
+    padding: 15px 30px;
+    border-radius: 70px;
+    font-size: 14px;
+}
+
+.button:hover{
+    background-color: white;
+    border: solid #7c4dff 3px;
+    color: #7c4dff;
+    padding: 12px 27px;
+
+}
+
+/* BUTTON DECONNEXION*/
+.buttonR{
+    background-color: white;
+    border: solid #7c4dff 3px;
+    color: #7c4dff;
+    padding: 12px 27px;
+    text-align:center;
+    border-radius: 70px;
+    font-size: 14px;
+
+}
+.buttonR:hover{
+    background-color: white;
+    border: solid #ffad00 3px;
+    color: #ffad00;
+    padding: 12px 27px;
+    text-align:center;
+    border-radius: 70px;
+    font-size: 14px;
+}
+/* PAGE MEMO */
+.task{
+    background-color: white;
+    color: #7c4dff;
+    border: 3px solid #7c4dff;
+    border-radius: 10px;
+    height: 250px;
+    width: 250px;
+    overflow-y: scroll;
+}
+
+.task::-webkit-scrollbar{
+    display:none;
+
+}
+
+.task:hover{
+    border: 3px solid #ffad00;
+}
+
+.plus{
+    height: 200px;
+    width: 200px;
+    border: none;
+    background-image: url(../assets/plus.png);
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.plus:hover{
+    background-image: url(../assets/plushover.png);
+}
+
+/* icone modif memo */
+.iconLink{
+    color: #7c4dff;
+}
+
+.iconLink:hover{
+    color: #ffad00;
+}
+
+.date{
+    color: #ffad00;
+    font-weight: bolder;
+}
+
+
+/* Page des WIDGETS*/
+.widgetV{
+    height: 250px;
+    width: 250px;
+    background-color:#7c4dff;
+    border-radius: 10px;
+    color: white;
+    border: 3px solid #7c4dff;
+}
+
+.widgetV:hover{
+    color: #ffad00;
+    border: 3px solid #ffad00;
+}
+
+.widgetO{
+    height: 250px;
+    width: 250px;
+    background-color:#ffad00;
+    border-radius: 10px;
+    color: #7c4dff;
+    border: 3px solid #ffad00;
+}
+
+.widgetO:hover{
+    color: white;
+    border: 3px solid #7c4dff;
+}
+
+/* USER */
+
+.accueil{
+    height: 300px;
+    width: 763px;
+    background-image: url(../assets/tipitribe.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cardUser{
+    height: 110px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: #ffad00;
+;
+}
+
+/* icone modif user */
+.iconLinkUser{
+    color: #7c4dff;
+}
+
+.iconLinkUser:hover{
+    color: #ffffff;
+}
+
+.titreUser{
+    color: #7c4dff;
+}
+
+/*FOOTER  */
+
+footer{
+    height: 100px;
+}
+
+th, td {
+    vertical-align: middle !important;
+}
