@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b92cd673-4888-4541-a8a8-dc18efba08df" name="Default Changelist" comment="Revert &quot;Modif architecture pour deploiement hostinger&quot;&#10;&#10;This reverts commit 0b1950a0">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +11,14 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="TIPI-DEPLOY" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
+
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -194,5 +197,21 @@
     <MESSAGE value="Revert &quot;ROLL BACK to new depot&quot;&#10;&#10;This reverts commit 2db9d367" />
     <MESSAGE value="Revert &quot;Modif architecture pour deploiement hostinger&quot;&#10;&#10;This reverts commit 0b1950a0" />
     <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;Modif architecture pour deploiement hostinger&quot;&#10;&#10;This reverts commit 0b1950a0" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="roll back" />
+    <option name="LAST_COMMIT_MESSAGE" value="roll back" />
   </component>
 </project>
