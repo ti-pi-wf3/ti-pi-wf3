@@ -1,0 +1,30 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Listes Course{% endblock %}
+
+{% block body %}
+
+<h1 class="title">Liste de courses</h1>
+            <div class="d-flex flex-wrap">
+            {% for oneCat in listes %}
+                
+                <div class="task col-3 mx-auto my-1 ">
+                    <div class="text-center mt-2">
+                    <h4>{{ oneCat.titleList }}</h4>
+                    </div> <hr>
+                        {% for oneArticle in listes %}
+    
+                        <div class="form-check ms-4">
+                            {{ oneArticle.titleList }}{{ oneArticle.article }}
+                            <p>{{ oneArticle.quantity }}</p>
+                            </label>
+                        </div>
+                        {% endfor %}
+                </div>
+            
+                {% endfor %}
+            </div>
+    {# {{ article.titleListe }}
+    {{ article.article }} #}
+
+{% endblock %}

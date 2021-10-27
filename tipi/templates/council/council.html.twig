@@ -1,0 +1,69 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Réunions{% endblock %}
+
+{% block body %}
+
+    {# <h1>{{ controller_homeCouncilTitre }}</h1> #}
+
+    <h4 class='title text-center mb-5'>Réunions</h4>
+        {# <a href="{{ path('addCouncil') }}"><input type="button" class="button" value="Créer une réunion !"></a> #}
+        
+    {# Affichage des messages utilisateur de validation de suppresion #}
+    {% for message in app.flashes('success') %}
+        
+        <div class="col-md-4 bg-dark text-center p-2 text-white mx-auto rounded my-2">
+        {{ message }}
+        </div>
+
+    {% endfor %}
+    <hr>
+
+    <div class="row mb-2 d-flex justify-content-center flex-wrap ">
+
+        {#  #}
+            {% for oneCouncil in councilsBDD %}
+
+                {# {{ dump(oneCouncil) }} #}
+
+                <div class="col-2 mx-2 my-2 task">
+
+                    <h5 class="title mt-2">{{ oneCouncil.titleCouncilTribe }}</h5>
+
+                    {# date() : filtre TWIG qui permet de formater une date / heure #}
+                    <small class="date">Réunion le : {{ oneCouncil.dateStart|date('d/m/Y') }} à {{ oneCouncil.hourStart|date('H:i:s') }}</small>
+
+                    <small class="date">Fin le : {{ oneCouncil.dateEnd|date('d/m/Y') }} à {{ oneCouncil.hourEnd|date('H:i:s') }}</small>
+
+                    <div class="d-flex flex-row ">
+                        {# On définit le lien permettant de rediriger l'internaute vers l'affichage du détail de l'Council #}
+                        {# 'blog_shox' correspond à la route permettant l'affichage du détail de l'Council #}
+                        {# C'est une route paramétrée qui attend un ID d'un Council dans l'URL #}
+                        {# en 2ème arguement de la fonction path(), nous fournissons l'id de l'Council à transmettre dans l'URL ({'id': oneCouncil.id}) #}
+                        <a class="iconLink" href="{{ path('councilRemove', {'id': oneCouncil.id}) }}" onclick="return(confirm('Voulez-vous réellement supprimer cet article ?'));"><i class="bi bi-trash"></i></a>
+                        
+                        {# SUPPRESSION REUNION #}
+                        <a class="iconLink" href="{{ path('councilEdit', {'id': oneCouncil.id}) }}"><i class="bi bi-pencil mx-2"></i></a>
+                    </div>
+                    <hr>
+
+                    {# slice() : fonction TWIG permettant de retourner une partie de la chaine de caractères #}
+                    {# arguments: 1 -> ici 0, La position de départ | 2 -> ici 80, Le nombre de caractères souhaités #}
+                    {# raw : filtre, qui permet de ne pas afficher -> <p></p> #}
+                    <p class="card-text mb-auto">{{ oneCouncil.comments|slice(0,80)|raw }} [...]</p>
+
+                </div>
+
+            {% endfor %}
+
+            <div class="col-2">
+                <a class="mb-5" href="{{ path('addCouncil') }}">
+                    <div class="plus" >
+                    </div>
+                </a>
+            </div>
+            <div class="col-10"></div>
+        {#  #}
+    </div>
+
+{% endblock %}
