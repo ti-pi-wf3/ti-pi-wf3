@@ -1,240 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d4ab785-0516-4354-9841-61dd68581b19" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ti-pi-wf3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ti-pi-wf3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/présentation/ETAPE DE MA FONCTIONNALITE.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/présentation/TABLE_council.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/présentation/click sur modifier.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/présentation/détail de la reunion confirmation .jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/présentation/détail de la reunion confirmation2 .jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/présentation/enregistrer la modification.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/présentation/entrer fonction reunion.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/présentation/entrer sur modification.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/présentation/fonction.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/présentation/formulaire.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/présentation/~$APE DE MA FONCTIONNALITE.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/Activation bootstrap.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/Arbo-tipi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/BDD-TIPI-FINAL+LOGO.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/BDD-TIPI.mwb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/BDD-TIPI.mwb.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/BDD-TIPI.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/BDD-TIPI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/colors.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/gestion_user_twig_afficher_les_membres_d_une_tribu_et_if_is_granted.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/js-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/line-git.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/logo-css.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/logo-sql.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/tipi.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/trello-test.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ti_pi.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/.env.test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/.idea/phpunit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/.idea/tipi.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/bin/console" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/bin/phpunit" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/composer.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/bundles.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/cache.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/dev/debug.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/dev/monolog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/dev/web_profiler.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/doctrine_migrations.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/framework.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/mailer.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/notifier.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/prod/deprecations.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/prod/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/prod/monolog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/routing.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/security.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/security_checker.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/sensio_framework_extra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/test/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/test/monolog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/test/validator.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/test/web_profiler.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/translation.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/twig.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/validator.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/packages/vich_uploader.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/preload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/routes.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/routes/annotations.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/routes/dev/web_profiler.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/routes/framework.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/config/services.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/migrations/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/migrations/Version20210721122002.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/migrations/Version20210722151233.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/migrations/Version20210722151240.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/migrations/Version20210723151415.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/migrations/Version20210723152224.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/migrations/Version20210726210447.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/migrations/Version20210727173727.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/migrations/Version20210729192759.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/migrations/Version20210729201128.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/phpunit.xml.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/assets/dashboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/assets/loginTipi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/assets/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/assets/logosmall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/assets/plus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/assets/plushover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/assets/tipee.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/assets/tipitribe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/css/admin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/css/cover.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61012b570b757120368762.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61012cb812eaa483452138.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61012cfbc13a9148322706.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61012d4cd2488827629456.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61012e68c8528065493987.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61012eb2aa8cf588278013.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61014c4ef24e7476718981.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61016f184da98256280813.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/610170a072f8b297454460.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/610170c960324171445056.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/610170d476ca2506966102.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/610170e9a4576322108483.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/610171ba1f308022390986.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/610177367703f123930303.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/610178dc9ac39954861596.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61017bc30efde547386980.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/6101d14048739571747251.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/6102a253bc1f2245415040.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/6102a2a96ffd0048586617.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61030bd334cc3385156691.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61030c63af276986557270.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61030d542bf62839443812.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/images/products/61030eeb59be1683387842.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/js/files.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/093bd294424a79b2c2c43d61378133a0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/0ac50e1d3fa233de2dec7ebc3278c1c0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/11a91e7c0286b01897a009d01d80459f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/279ac50afccfb399adbe16cc340b9908.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/2de7815321845b28437e6904973f490b.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/32403a8255d268b33cf6b1aa69de5b8f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/333882b7aee81e514263449db3c36250.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/3b9881fee7e8a433237ec8d3af8e53f6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/40d33309ef9fb146f0da8a5df85b95c9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/43683d697dc9c4e8a1390cc622bf0020.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/4609a561521ea924d1dcff271849829c.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/5c0bc10e9fe3cc5943b7d2e990b4525e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/6e4f5bed8f15007f7682ef0d98d0fe38.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/875c5d1247d99925624be59333fc855d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/88cdaa5ed9ac09fe3bc259d84c79d016.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/8fd34f2bb82d124d048422e1681dd8d4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/92bde7356ce3f2d483f373c277ff1770.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/96c5a10dff32fbb33f8a1a5724331318.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/9eb791a05a58145fc3fb152306176dd2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/a26ef297929b4296c68c03028f231da0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/a7a4f24710051c5c36428b0461c4a49a.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/b06ea0c8c29dd4ad3ee3307bb7c46adc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/b74f47f089c202b7de5a34cf388f25c7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/bbf685a4b3026f320c5a6df83ba5a9e8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/c591fbdc98ee678d4ab83cd3cefdc8c4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/cb4ee1bf70ac914bcd9b6adf4ba6bdbc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/public/uploads/de570c063cc9712c91a5dd788d650c53.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Controller/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Controller/AdminController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Controller/CouncilController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Controller/DocumentsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Controller/ListeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Controller/RegistrationController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Controller/RepertoireController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Controller/SecurityController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Controller/TipiController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Controller/ToDoListController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Controller/UserController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/Article.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/CategoryArticle.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/CategoryDocument.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/Council.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/Documents.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/Files.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/Liste.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/Repertoire.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/ToDoList.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/Tribe.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Entity/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/AddMemberType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/ArticleType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/CategoryArticleType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/CategoryDocumentAddType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/CouncilType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/DocumentAddType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/FileAddType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/ListeType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/RegistrationType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/RepertoireType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/ToDoListType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Form/TribeType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Kernel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/ArticleRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/CategoryArticleRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/CategoryDocumentRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/CouncilRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/DocumentsRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/FilesRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/ListeRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/RepertoireRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/ToDoListRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/TribeRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Repository/UserRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/src/Security/LoginForAuthenticator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/symfony.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/admin.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/admin/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/base.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/base_admin.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/council/addCouncil.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/council/council.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/council/showCouncil.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/documents/categoryDocument.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/documents/categoryDocumentAdd.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/documents/documentAdd.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/documents/documentView.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/documents/documents.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/documents/fileAdd.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/documents/formEditDocument.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/documents/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/liste/article.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/liste/categoryArticle.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/liste/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/liste/liste.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/registration/add_member.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/registration/register.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/registration/tribe.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/repertoire.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/repertoire/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/repertoire/show.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/security/login.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/tipi/home.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/tipi/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/to_do_list/add.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/to_do_list/show.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/user/gestion_user.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/templates/user/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/tests/bootstrap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tipi/translations/.gitignore" beforeDir="false" />
-    </list>
+    <list default="true" id="7d4ab785-0516-4354-9841-61dd68581b19" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -245,7 +12,14 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="TIPI-DEPLOY" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -412,5 +186,21 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="roll back" />
+    <option name="LAST_COMMIT_MESSAGE" value="roll back" />
   </component>
 </project>
